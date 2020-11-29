@@ -14,6 +14,12 @@ const createWebpackPlugins = (
 ): Plugin[] => {
   const plugins = [
     new EnvironmentPlugin(env),
+    new DotEnv({
+      safe: true, // load '.env.example' to verify
+      allowEmptyValues: false,
+      silent: false,
+    }),
+
     /**
      * Provide HTML template
      */
