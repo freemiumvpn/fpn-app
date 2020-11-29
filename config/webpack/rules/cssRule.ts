@@ -1,25 +1,25 @@
 import { Rule } from 'webpack'
 
 const sassCss: Rule = {
-    test: /\.s[ac]ss$/i,
-    use: [
-        'style-loader',
-        {
-            loader: 'css-loader',
-            options: {
-                modules: {
-                    localIdentName: '[name]___[local]___[hash:base64:5]',
-                },
-                importLoaders: 1,
-                localsConvention: 'camelCase',
-                url: true,
-                import: true,
-            },
+  test: /\.s[ac]ss$/i,
+  use: [
+    'style-loader',
+    {
+      loader: 'css-loader',
+      options: {
+        modules: {
+          localIdentName: '[name]___[local]___[hash:base64:5]',
         },
-        {
-            loader: 'sass-loader',
-        },
-    ],
+        importLoaders: 1,
+        localsConvention: 'camelCase',
+        url: true,
+        import: true,
+      },
+    },
+    {
+      loader: 'sass-loader',
+    },
+  ],
 }
 
 /**
@@ -28,13 +28,13 @@ const sassCss: Rule = {
  * import 'prismjs/themes/prism-tomorrow?raw';
  */
 const rawCss: Rule = {
-    test: /\.css$/,
-    resourceQuery: /^\?raw$/,
-    use: ['style-loader', 'css-loader'],
+  test: /\.css$/,
+  resourceQuery: /^\?raw$/,
+  use: ['style-loader', 'css-loader'],
 }
 
 const cssRule: Rule = {
-    oneOf: [rawCss, sassCss],
+  oneOf: [rawCss, sassCss],
 }
 
 export default cssRule
