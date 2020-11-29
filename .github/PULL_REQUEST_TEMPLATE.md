@@ -20,4 +20,4 @@
 <!-- List all the information that needs to be added to the documentation after merge -->
 <!-- When your changes are merged you will be asked to contribute this to the documentation -->
 
-<img src="../assets/img/fpn.png" height="200">
+<img src="https://raw.githubusercontent.com/fremiumvpn/fpn-app/main/assets/img/fpn.png?raw=true" height="200">
