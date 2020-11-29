@@ -13,46 +13,46 @@ import { WebpackArgs } from './types'
 const PATH_ROOT = path.resolve(__dirname, '..', '..')
 
 const createWebpackConfig = (args: WebpackArgs): Configuration => {
-    const env = createWebpackEnv(args)
-    const paths = createWebpackPaths(PATH_ROOT)
+  const env = createWebpackEnv(args)
+  const paths = createWebpackPaths(PATH_ROOT)
 
-    return {
-        mode: env.isProduction() ? 'production' : 'development',
-        entry: paths.src,
-        output: {
-            chunkFilename: 'chunk.[name].[contenthash].js',
-            path: paths.build,
-            filename: '[name].js',
-            publicPath: '/',
+  return {
+    mode: env.isProduction() ? 'production' : 'development',
+    entry: paths.src,
+    output: {
+      chunkFilename: 'chunk.[name].[contenthash].js',
+      path: paths.build,
+      filename: '[name].js',
+      publicPath: '/',
+    },
+    resolve: {
+      extensions: ['.tsx', '.ts', '.js', 'jsx'],
+    },
+    module: {
+      rules: [jsRule, cssRule],
+    },
+    plugins: createWebpackPlugins(env, paths),
+    devtool: env.isProduction() ? 'source-map' : 'cheap-eval-source-map',
+    cache: env.isProduction() ? false : true,
+    optimization: {
+      splitChunks: {
+        chunks: 'initial',
+        cacheGroups: {
+          vendors: false,
+          default: false,
         },
-        resolve: {
-            extensions: ['.tsx', '.ts', '.js', 'jsx'],
-        },
-        module: {
-            rules: [jsRule, cssRule],
-        },
-        plugins: createWebpackPlugins(env, paths),
-        devtool: env.isProduction() ? 'source-map' : 'cheap-eval-source-map',
-        cache: env.isProduction() ? false : true,
-        optimization: {
-            splitChunks: {
-                chunks: 'initial',
-                cacheGroups: {
-                    vendors: false,
-                    default: false,
-                },
-            },
-        },
-        ...(env.isDevelopment() && {
-            devServer: {
-                compress: true,
-                contentBase: paths.src,
-                hot: true,
-                port: 3000,
-                historyApiFallback: true,
-            },
-        }),
-    }
+      },
+    },
+    ...(env.isDevelopment() && {
+      devServer: {
+        compress: true,
+        contentBase: paths.src,
+        hot: true,
+        port: 3000,
+        historyApiFallback: true,
+      },
+    }),
+  }
 }
 
 export default createWebpackConfig

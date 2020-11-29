@@ -27,4 +27,4 @@ Node.js version:
 Operating System: 
 Additional tools:
 
-<img src="./../../assets/img/fpn.png" height="200">
+<img src="https://raw.githubusercontent.com/fremiumvpn/fpn-app/main/assets/img/fpn.png?raw=true" height="200">
