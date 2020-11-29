@@ -1,6 +1,6 @@
-import * as React from 'react'
+import React from 'react'
 
-import * as styles from './example.scss'
+import styles from './example.scss'
 
 const Example: React.FC = () => (
   <div className={styles.main} aria-label="example">
