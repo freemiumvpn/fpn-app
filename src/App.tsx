@@ -1,7 +1,7 @@
 import React from 'react'
+
 import { getEnvVars } from './env'
 import AuthLogin from './modules/auth/AuthLogin'
-
 import AuthLogout from './modules/auth/AuthLogout'
 import AuthProfile from './modules/auth/AuthProfile/AuthProfile'
 import AuthProvider from './modules/auth/AuthProvider'
