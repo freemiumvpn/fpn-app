@@ -1,0 +1,25 @@
+name: Test
+
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup repo
+        uses: actions/checkout@v2
+
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12"
+
+      - name: Install
+        run: npm ci
+
+      - name: Test
+        run: npm run lint && npm run test
+
+      - name: Build
+        run: npm run build
