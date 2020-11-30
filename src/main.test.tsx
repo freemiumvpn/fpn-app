@@ -6,10 +6,11 @@ describe('Example Test', () => {
     document.body.appendChild(container)
     require('./main.tsx')
 
-    const element = document.querySelector('[aria-label="example"]')
+    const element = document.querySelector('div')
 
     const value = element && element.innerHTML
-    const expected = 'Hello World!'
+    const expected =
+      '<button>Log In</button><button>Log Out</button><div>Loading ...</div>'
 
     expect(value).toEqual(expected)
   })
