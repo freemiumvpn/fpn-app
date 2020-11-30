@@ -1,0 +1,41 @@
+@import "./palette";
+
+// var is a custom global function.
+// it allows you to use css variables within sass
+// e.g. var(--default)
+@function var($variable) {
+    @return unquote("var("+ $variable + ")");
+}
+
+$theme-default: (--default: $color-mine-shaft,
+    --primary: $color-java,
+    --secondary: $color-java,
+    --background: $color-black-squeeze,
+);
+
+$theme-dark: (--default: $color-mine-shaft,
+    --primary: $color-java,
+    --secondary: $color-java,
+    --background: $color-madison,
+);
+
+html {
+
+    @each $variable,
+    $value in $theme-default {
+        #{$variable}: $value;
+    }
+
+    transition: background .5s ease-in-out;
+}
+
+html[data-theme='dark'] {
+
+    @each $variable,
+    $value in $theme-dark {
+        #{$variable}: $value;
+    }
+
+    background-color: var(--background);
+    color: var(--default);
+}
