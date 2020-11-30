@@ -1,5 +1,6 @@
 import React from 'react'
 
+import './shared/styles/global.scss'
 import { getEnvVars } from './env'
 import AuthLogin from './modules/auth/AuthLogin'
 import AuthLogout from './modules/auth/AuthLogout'
