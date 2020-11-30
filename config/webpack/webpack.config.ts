@@ -1,13 +1,12 @@
-import * as path from 'path'
+import path from 'path'
+
 import { Configuration } from 'webpack'
 
 import jsRule from './rules/jsRules'
 import cssRule from './rules/cssRule'
-
 import createWebpackEnv from './utils/createWebpackEnv'
 import createWebpackPlugins from './utils/createWebpackPlugins'
 import createWebpackPaths from './utils/createWebpackPaths'
-
 import { WebpackArgs } from './types'
 
 const PATH_ROOT = path.resolve(__dirname, '..', '..')

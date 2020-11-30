@@ -1,9 +1,7 @@
-import * as React from 'react'
-import * as ReactDOM from 'react-dom'
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-import Example from './Example'
-
-const App: React.FC = () => <Example />
+import App from './App'
 
 const container = document.getElementById('main')
 ReactDOM.render(<App />, container)

@@ -1,9 +1,11 @@
-import * as CopyWebpackPlugin from 'copy-webpack-plugin'
-import * as HtmlWebpackPlugin from 'html-webpack-plugin'
-import * as path from 'path'
-import * as webpack from 'webpack'
+import path from 'path'
+
+import CopyWebpackPlugin from 'copy-webpack-plugin'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import webpack from 'webpack'
 import { EnvironmentPlugin, Plugin } from 'webpack'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
+import DotEnv from 'dotenv-webpack'
 
 import { WebpackEnv, WebpackPaths } from '../types'
 
@@ -13,6 +15,12 @@ const createWebpackPlugins = (
 ): Plugin[] => {
   const plugins = [
     new EnvironmentPlugin(env),
+    new DotEnv({
+      safe: true, // load '.env.example' to verify
+      allowEmptyValues: false,
+      silent: false,
+    }),
+
     /**
      * Provide HTML template
      */

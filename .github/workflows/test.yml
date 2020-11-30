@@ -21,5 +21,8 @@ jobs:
       - name: Test
         run: npm run lint && npm run test
 
+      - name: Mock Env file
+        run: cp .env.example .env
+
       - name: Build
         run: npm run build
