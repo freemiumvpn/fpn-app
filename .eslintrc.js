@@ -9,6 +9,7 @@ const config = {
         'newlines-between': 'always',
       },
     ],
+    "react/prop-types": "off", // we use TS for types
   },
   extends: [
     'eslint:recommended',
