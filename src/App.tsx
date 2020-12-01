@@ -1,24 +1,14 @@
 import React from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 import './shared/styles/global.scss'
-import { getEnvVars } from './env'
-import AuthLogin from './modules/auth/AuthLogin'
-import AuthLogout from './modules/auth/AuthLogout'
-import AuthProfile from './modules/auth/AuthProfile/AuthProfile'
-import AuthProvider from './modules/auth/AuthProvider'
+import Routes from './routes/routes'
 
 const App: React.FC = () => {
-  const env = getEnvVars()
   return (
-    <AuthProvider
-      domain={env.auth0.domain}
-      clientId={env.auth0.clientId}
-      redirectUri={env.auth0.redirectUri}
-    >
-      <AuthLogin />
-      <AuthLogout />
-      <AuthProfile />
-    </AuthProvider>
+    <Router>
+      <Routes />
+    </Router>
   )
 }
 
