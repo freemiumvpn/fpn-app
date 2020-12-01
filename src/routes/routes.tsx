@@ -14,6 +14,7 @@ enum Path {
 
 const Routes: React.FC = () => {
   const env = getEnvVars()
+
   return (
     <React.Suspense fallback={<SplashPage />}>
       <AuthProvider

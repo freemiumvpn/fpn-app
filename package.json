@@ -10,7 +10,7 @@
     "start": "npm run types:sass:watch | npm run dev:server",
     "storybook:start": "npm run types:sass:watch | start-storybook -p 6006",
     "storybook:build": "npm run types:sass && build-storybook",
-    "test": "jest",
+    "test": "jest --no-coverage",
     "test:watch": "jest --watch --no-coverage",
     "test:coverage": "jest --coverage",
     "types:sass": "npm run clean && tsm src --camelCase",
