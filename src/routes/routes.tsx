@@ -6,10 +6,19 @@ import { getEnvVars } from '../env'
 import HomePage from '../pages/Home'
 import LoginPage from '../pages/Login'
 import SplashPage from '../pages/Splash/Splash'
+import WelcomePage from '../pages/Welcome/Welcome'
+import UserPage from '../pages/User/User'
 
 enum Path {
-  LOGIN = '/login',
   HOME = '/',
+  LOGIN = '/login',
+  SIGN_UP = '/signup',
+
+  // TODO
+  ABOUT = '/about',
+  PRICING = '/pricing',
+  USER = '/user',
+  WELCOME = '/welcome',
 }
 
 const Routes: React.FC = () => {
@@ -24,6 +33,9 @@ const Routes: React.FC = () => {
       >
         <Switch>
           <Route component={LoginPage} path={Path.LOGIN} />
+          <Route component={LoginPage} path={Path.SIGN_UP} />
+          <Route component={UserPage} path={Path.USER} />
+          <Route component={WelcomePage} path={Path.WELCOME} />
           <Route component={HomePage} />
         </Switch>
       </AuthProvider>

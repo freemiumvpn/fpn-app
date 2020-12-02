@@ -1,0 +1,15 @@
+.button {
+    color: #fff;
+    background: linear-gradient(102deg, #147C94 9.16%, #15718E 32.02%, #105173 64.72%);
+    font-weight: 500;
+    transition: all 0.5s;
+    text-shadow: 0px 3px 8px #147C94;
+    border-radius: 8px;
+    font-size: 20px;
+    padding: 16px 20px;
+
+    &:hover {
+        box-shadow: 0px 1px 40px lighten($color: #147C94, $amount: 50);
+        transition: all 0.1s;
+    }
+}

@@ -1,3 +1,5 @@
+@import "../../shared/styles/palette";
+
 .main {
     background-color: var(--background);
     display: flex;
@@ -11,7 +13,7 @@
 .text {
     text-align: center;
     margin: 20px;
-    color: white;
+    color: $color-white-solid;
 }
 
 .title {
@@ -38,14 +40,14 @@ $border: 25px;
 }
 
 .circle {
-    background-color: #0b345a;
+    background-color: $color-madison;
     border-radius: 50%;
     height: $size;
     width: $size;
 }
 
 .innerCircle {
-    background-color: #22C4D6;
+    background-color: $color-java;
     border-radius: 50%;
     height: $size - $border;
     width: $size - $border;
@@ -61,7 +63,7 @@ $border: 25px;
 }
 
 .shadow {
-    background: radial-gradient(50% 50%, #0b345a 0%, #22C4D6 100%);
+    background: radial-gradient(50% 50%, $color-madison 0%, $color-java 100%);
     height: $border;
     width: $size;
 }
