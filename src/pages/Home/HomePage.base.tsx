@@ -13,7 +13,9 @@ const HomePageBase: React.FC = () => {
     <div className={styles.main}>
       <header className={classnames(styles.header)}>
         <div className={classnames(styles.headerContainer, styles.content)}>
-          <a>LOGO</a>
+          <Link className={styles.link} to={Path.HOME}>
+            FPN
+          </Link>
           <ul className={styles.nav}>
             <li>
               <Link to={Path.ABOUT}>About</Link>
@@ -23,25 +25,28 @@ const HomePageBase: React.FC = () => {
             </li>
           </ul>
           <div className={styles.signInActions}>
-            <Link className={styles.login} to={Path.LOGIN}>
+            <Link className={styles.link} to={Path.LOGIN}>
               Login
             </Link>
-            <Link className={styles.signUp} to={Path.SIGN_UP}>
+            <ButtonLink className={styles.signUp} to={Path.SIGN_UP}>
               Sign Up
-            </Link>
+            </ButtonLink>
           </div>
         </div>
       </header>
 
-      <div className={classnames(styles.body, styles.content)}>
-        <div>
+      <div className={classnames(styles.body)}>
+        <div className={classnames(styles.content, styles.bodyContent)}>
           <Logo className={styles.logo} />
+          <h1 className={styles.title}>Get started with FPN today.</h1>
+          <p className={styles.text}>
+            FPN is a fast an secure freemium VPN you will enjoy
+          </p>
+          <ButtonLink className={styles.button} to={Path.SIGN_UP}>
+            {' '}
+            Sign up for free 🚀
+          </ButtonLink>
         </div>
-        <h1 className={styles.title}>Get started with FPN today.</h1>
-        <p className={styles.text}>
-          FPN is a fast an secure freemium VPN you will enjoy
-        </p>
-        <ButtonLink to={Path.SIGN_UP}> Sign up for free 🚀</ButtonLink>
       </div>
 
       <footer></footer>
