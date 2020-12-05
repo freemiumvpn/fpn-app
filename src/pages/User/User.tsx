@@ -6,7 +6,7 @@ import AuthProfile from '../../modules/auth/AuthProfile/AuthProfile'
 import { Path } from '../../routes/routes'
 import SplashPage from '../Splash/Splash'
 
-const HomePage: React.FC = () => {
+const UserPage: React.FC = () => {
   const { isAuthenticated, isLoading } = useAuth0()
 
   if (isLoading) {
@@ -20,4 +20,4 @@ const HomePage: React.FC = () => {
   return <AuthProfile />
 }
 
-export default HomePage
+export default UserPage

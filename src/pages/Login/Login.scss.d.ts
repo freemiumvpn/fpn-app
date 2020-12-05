@@ -5,4 +5,3 @@ export const img: string;
 export const title: string;
 export const body: string;
 export const text: string;
-export const button: string;

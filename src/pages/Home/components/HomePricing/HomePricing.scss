@@ -1,0 +1,75 @@
+@import "../../../../shared/styles/breakpoints.scss";
+@import "../../../../shared/styles/palette.scss";
+
+.container {
+    padding: 20px 32px;
+}
+
+.title {
+    text-align: center;
+    font-size: 40px;
+}
+
+.text {
+    text-align: center;
+    font-size: 20px;
+    max-width: 800px;
+    margin: auto;
+    line-height: 30px;
+}
+
+.pricingHeader {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0 20px;
+}
+
+.pricingHeaderTitle {
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+.pricingHeaderToggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pricingHeaderOptions {
+    margin: 0 20px;
+    padding: 6px 20px;
+    height: 40px;
+    background-color: $color-matisse;
+    border-radius: 7px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+.toggleLabel {
+    font-size: 16px;
+    width: 100px;
+    text-align: center;
+    color: white;
+    text-transform: capitalize;
+}
+
+.toggleSelected {
+    background-color: $color-eastern-blue;
+    border-radius: 4px;
+    padding: 5px 20px;
+    transition: all 0.15s ease 0s;
+}
+
+.description {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 500px;
+    margin: 25px auto 50px;
+}

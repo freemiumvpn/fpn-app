@@ -1,0 +1,133 @@
+@import "../../shared/styles/breakpoints.scss";
+@import "../../shared/styles/palette.scss";
+
+.main {
+    background-color: var(--background);
+}
+
+.content {
+    padding: 0 32px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    background-color: $color-mint-tulip;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+.headerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-grow: 1;
+
+    margin: auto;
+    max-width: $breakpoint-desktop;
+    font-size: 14px;
+    height: 66px;
+    padding: 0 40px;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    max-width: 500px;
+    flex-grow: 1;
+
+    a {
+        color: $color-madison;
+        margin-right: 18px;
+    }
+}
+
+.signInActions {
+    display: flex;
+    align-items: center;
+
+}
+
+.link {
+    color: $color-madison;
+    font-weight: 600;
+    margin-right: 18px;
+    flex-shrink: 0;
+}
+
+.signUp {
+    color: white;
+    font-size: 14px;
+    padding: 10px 15px;
+}
+
+.body {
+    margin-top: 66px;
+    padding: 100px 0 0 0;
+    text-align: center;
+    background-color: $color-mint-tulip;
+}
+
+.bodyContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 40px;
+}
+
+.title {
+    font-size: 40px;
+}
+
+.text {
+    font-size: 25px;
+    margin: 16px 0 50px;
+}
+
+.logo {
+    width: 300px;
+    height: 300px;
+}
+
+.button {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+
+    &:after {
+        animation: shine 5s ease-in-out infinite;
+        animation-fill-mode: forwards;
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -200%;
+        width: 200%;
+        height: 200%;
+        opacity: 0;
+        transform: rotate(30deg);
+        background: linear-gradient(to right, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0.13) 75%, rgba(255, 255, 255, 0.5) 113%, rgba(255, 255, 255, 0) 62%)
+    }
+}
+
+@keyframes shine {
+    10% {
+        opacity: 1;
+        left: -200%;
+        transition-duration: 0.7s, 0.7s, 0.15s;
+        transition-property: left, opacity;
+    }
+
+    100% {
+        opacity: 0;
+        left: 100%;
+    }
+}

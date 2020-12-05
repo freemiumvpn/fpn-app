@@ -1,0 +1,17 @@
+@import "../../../../shared/styles/palette.scss";
+
+.footer {
+    border-top: 1px solid #292830;
+    margin: 0 8px;
+}
+
+.link {
+    color: $color-madison;
+    font-weight: 600;
+    margin-right: 18px;
+    flex-shrink: 0;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
