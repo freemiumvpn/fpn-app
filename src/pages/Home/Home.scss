@@ -2,9 +2,7 @@
 @import "../../shared/styles/palette.scss";
 
 .main {
-    background-color: $color-foam;
-    width: 100%;
-    height: 100%;
+    background-color: var(--background);
 }
 
 .content {
@@ -20,7 +18,7 @@
     left: 0;
     right: 0;
 
-    background-color: $color-foam;
+    background-color: $color-mint-tulip;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(5px);
 }
