@@ -15,6 +15,7 @@ ENV NODE_ENV production
 
 RUN npm run build
 RUN npm run build:server
+RUN npm run test:bundlesize
 
 FROM node:12-alpine AS STAGE_BUILD
 

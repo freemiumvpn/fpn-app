@@ -25,4 +25,9 @@ jobs:
         run: cp .env.example .env
 
       - name: Build
-        run: npm run build
+        run: |
+          npm run build
+          npm run build:server
+
+      - name: Test Build
+        run: npm run test:bundlesize

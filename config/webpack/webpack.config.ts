@@ -8,6 +8,7 @@ import createWebpackEnv from './utils/createWebpackEnv'
 import createWebpackPlugins from './utils/createWebpackPlugins'
 import createWebpackPaths from './utils/createWebpackPaths'
 import { WebpackArgs } from './types'
+import createWebpackMinimizer from './utils/createWebpackMinimizer'
 
 const PATH_ROOT = path.resolve(__dirname, '..', '..')
 
@@ -21,7 +22,7 @@ const createWebpackConfig = (args: WebpackArgs): Configuration => {
     output: {
       chunkFilename: 'chunk.[name].[contenthash].js',
       path: paths.build,
-      filename: '[name].js',
+      filename: '[name].[hash].js',
       publicPath: '/',
     },
     resolve: {
@@ -34,6 +35,8 @@ const createWebpackConfig = (args: WebpackArgs): Configuration => {
     devtool: env.isProduction() ? 'source-map' : 'cheap-eval-source-map',
     cache: env.isProduction() ? false : true,
     optimization: {
+      minimize: env.isProduction(),
+      minimizer: createWebpackMinimizer(env),
       splitChunks: {
         chunks: 'initial',
         cacheGroups: {
@@ -49,6 +52,10 @@ const createWebpackConfig = (args: WebpackArgs): Configuration => {
         hot: true,
         port: 3000,
         historyApiFallback: true,
+        overlay: {
+          warnings: true,
+          errors: true,
+        },
       },
     }),
   }
