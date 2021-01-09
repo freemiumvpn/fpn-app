@@ -3,7 +3,7 @@ import TerserPlugin from 'terser-webpack-plugin'
 
 import { WebpackEnv } from '../types'
 
-const createWebpackMinimizer = (env: WebpackEnv) => {
+const createWebpackMinimizer = (env: WebpackEnv): TerserPlugin[] => {
   if (!env.isProduction()) {
     return []
   }
