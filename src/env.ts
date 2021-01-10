@@ -3,12 +3,12 @@
  * or injected as a base64 argument in the window
  */
 
-interface DynamicEnv extends Window {
+interface CustomWindow extends Window {
   __ENV__: string
 }
 
 const parseEnv = (
-  env = (window as DynamicEnv & typeof globalThis).__ENV__
+  env = (window as CustomWindow & typeof globalThis).__ENV__
 ): Record<EnvKey, string> => {
   let injectedEnv = {}
 
