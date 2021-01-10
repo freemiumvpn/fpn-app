@@ -14,6 +14,7 @@ RUN npm test
 
 ENV NODE_ENV production
 
+RUN cp .env.example .env
 RUN npm run build
 RUN npm run build:server
 RUN npm run test:bundlesize
