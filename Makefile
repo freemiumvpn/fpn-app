@@ -3,7 +3,6 @@
 DOCKER_NAMESPACE=freemiumvpn
 DOCKER_CONTAINER_NAME=fpn-app
 DOCKER_REPOSITORY=$(DOCKER_NAMESPACE)/$(DOCKER_CONTAINER_NAME)
-DOCKER_PLATFORMS=linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6
 SHA8=$(shell echo $(GITHUB_SHA) | cut -c1-8)
 
 docker-image-local:
@@ -12,16 +11,10 @@ docker-image-local:
 ci-docker-auth:
 	@echo "${DOCKER_PASSWORD}" | docker login --username "${DOCKER_USERNAME}" --password-stdin
 
-ci-docker-buildx:
-	@docker buildx build \
-		--platform $(DOCKER_PLATFORMS) \
+ci-docker-build:
+	@docker build --rm \
 		--tag $(DOCKER_REPOSITORY):$(SHA8) \
-		--tag $(DOCKER_REPOSITORY):latest \
-		--output "type=image,push=false" . 
+		--tag $(DOCKER_REPOSITORY):latest .
 
-ci-docker-buildx-push: ci-docker-buildx
-	@docker buildx build \
-		--platform $(DOCKER_PLATFORMS) \
-		--tag $(DOCKER_REPOSITORY):$(SHA8) \
-		--tag $(DOCKER_REPOSITORY):latest \
-		--output "type=image,push=true" .
+ci-docker-build-push: ci-docker-build
+	@docker push $(DOCKER_REPOSITORY) --all-tags
