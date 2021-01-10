@@ -2,7 +2,14 @@
  * Attempts to retrieve env variables from process.env
  * or injected as a base64 argument in the window
  */
-const parseEnv = (env = (window as any).__ENV__): Record<EnvKey, string> => {
+
+interface DynamicEnv extends Window {
+  __ENV__: string
+}
+
+const parseEnv = (
+  env = (window as DynamicEnv & typeof globalThis).__ENV__
+): Record<EnvKey, string> => {
   let injectedEnv = {}
 
   if (env) {
