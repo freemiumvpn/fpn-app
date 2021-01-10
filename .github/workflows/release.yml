@@ -3,7 +3,7 @@ name: Release builds
 on: push
 
 jobs:
-  buildx:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

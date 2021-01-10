@@ -17,4 +17,4 @@ ci-docker-build:
 		--tag $(DOCKER_REPOSITORY):latest .
 
 ci-docker-build-push: ci-docker-build
-	@docker push $(DOCKER_REPOSITORY) --all-tags
+	@docker image push --all-tags $(DOCKER_REPOSITORY)
