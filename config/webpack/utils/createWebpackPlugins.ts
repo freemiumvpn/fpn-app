@@ -25,7 +25,8 @@ const createWebpackPlugins = (
      * Provide HTML template
      */
     new HtmlWebpackPlugin({
-      template: path.join(paths.root, 'assets', 'index.html'),
+      template: path.join(paths.root, 'assets', 'index.ejs'),
+      GIT_SHA: env.GIT_SHA,
     }),
     /**
      * Add assets to dist

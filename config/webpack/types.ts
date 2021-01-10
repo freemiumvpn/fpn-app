@@ -6,6 +6,12 @@ export interface WebpackEnv {
    * webpack --env.NODE_EVN="production"
    */
   NODE_ENV: 'production' | 'development'
+
+  /**
+   * webpack --env.GIT_SHA=<hash>
+   */
+  GIT_SHA: string
+
   /**
    * webpack --env.ANALYZE
    */
