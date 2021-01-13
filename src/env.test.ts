@@ -5,10 +5,6 @@ describe('Env', () => {
     expect(() => parseEnv()).not.toThrow()
   })
 
-  it('should handle null envs', () => {
-    expect(() => parseEnv(null)).not.toThrow()
-  })
-
   it('should handle injected envs', () => {
     const injected = JSON.stringify({ AUTH0_DOMAIN: 'baz' })
     const env = btoa(injected)

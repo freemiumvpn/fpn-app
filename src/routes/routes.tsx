@@ -8,11 +8,13 @@ import LoginPage from '../pages/Login'
 import SplashPage from '../pages/Splash/Splash'
 import WelcomePage from '../pages/Welcome/Welcome'
 import UserPage from '../pages/User/User'
+import SurveyPage from '../pages/Survey/Survey'
 
 enum Path {
   HOME = '/',
   LOGIN = '/login',
   SIGN_UP = '/signup',
+  SURVEY = '/survey',
 
   // TODO
   ABOUT = '/about',
@@ -36,6 +38,7 @@ const Routes: React.FC = () => {
           <Route component={LoginPage} path={Path.SIGN_UP} />
           <Route component={UserPage} path={Path.USER} />
           <Route component={WelcomePage} path={Path.WELCOME} />
+          <Route component={SurveyPage} path={Path.SURVEY} />
           <Route component={HomePage} />
         </Switch>
       </AuthProvider>

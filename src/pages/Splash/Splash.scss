@@ -1,7 +1,7 @@
 @import "../../shared/styles/palette";
 
 .main {
-    background-color: var(--background);
+    background-color: $color-blizzard-blue;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,7 +13,7 @@
 .text {
     text-align: center;
     margin: 20px;
-    color: $color-white-solid;
+    color: $color-madison;
 }
 
 .title {
@@ -63,7 +63,7 @@ $border: 25px;
 }
 
 .shadow {
-    background: radial-gradient(50% 50%, $color-madison 0%, $color-java 100%);
+    background: radial-gradient(50% 50%, $color-madison 0%, $color-blizzard-blue 100%);
     height: $border;
     width: $size;
 }

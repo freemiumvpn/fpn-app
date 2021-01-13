@@ -1,10 +1,13 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import React from 'react'
-import { Redirect } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 import AuthProfile from '../../modules/auth/AuthProfile/AuthProfile'
+import Header from '../../modules/brand/Header/Header'
 import { Path } from '../../routes/routes'
 import SplashPage from '../Splash/Splash'
+
+import styles from './User.scss'
 
 const UserPage: React.FC = () => {
   const { isAuthenticated, isLoading } = useAuth0()
@@ -17,7 +20,15 @@ const UserPage: React.FC = () => {
     return <Redirect to={Path.LOGIN} />
   }
 
-  return <AuthProfile />
+  return (
+    <div>
+      <Header />
+      <section className={styles.section}>
+        <AuthProfile />
+        <Link to={Path.SURVEY}>Survey</Link>
+      </section>
+    </div>
+  )
 }
 
 export default UserPage
