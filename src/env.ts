@@ -1,8 +1,9 @@
+import memoise from './shared/utils/memoise'
+
 /***
  * Attempts to retrieve env variables from process.env
  * or injected as a base64 argument in the window
  */
-
 interface CustomWindow extends Window {
   __ENV__: string
 }
@@ -38,6 +39,12 @@ enum EnvKey {
   AUTH0_CLIENT_ID = 'AUTH0_CLIENT_ID',
   AUTH0_CLIENT_SECRET = 'AUTH0_CLIENT_SECRET',
   AUTH0_REDIRECT_URI = 'AUTH0_REDIRECT_URI',
+
+  /**
+   * OFFER WALL
+   */
+  OFFER_WALL_CLIENT_SECRET = 'OFFER_WALL_CLIENT_SECRET',
+  OFFER_WALL_URI = 'OFFER_WALL_URI',
 }
 
 interface Env {
@@ -47,17 +54,27 @@ interface Env {
     clientSecret: string
     redirectUri: string
   }
+  offerWall: {
+    clientSecret: string
+    redirectUri: string
+  }
 }
 
-const getEnvVars = (env = parseEnv()): Env => {
+const createEnvVars = (env = parseEnv()): Env => {
   return {
     auth0: {
-      domain: env.AUTH0_DOMAIN,
-      clientId: env.AUTH0_CLIENT_ID,
-      clientSecret: env.AUTH0_CLIENT_SECRET,
-      redirectUri: env.AUTH0_REDIRECT_URI,
+      domain: env.AUTH0_DOMAIN || '',
+      clientId: env.AUTH0_CLIENT_ID || '',
+      clientSecret: env.AUTH0_CLIENT_SECRET || '',
+      redirectUri: env.AUTH0_REDIRECT_URI || '',
+    },
+    offerWall: {
+      clientSecret: env.OFFER_WALL_CLIENT_SECRET || '',
+      redirectUri: env.OFFER_WALL_URI || '',
     },
   }
 }
+
+const getEnvVars = memoise(createEnvVars)
 
 export { getEnvVars, Env, EnvKey, parseEnv }

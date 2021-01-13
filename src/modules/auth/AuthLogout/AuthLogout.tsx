@@ -1,13 +1,16 @@
 import React from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 
+import styles from './AuthLogout.scss'
+
 const AuthLogout: React.FC = () => {
   const { logout } = useAuth0()
+  const handleClick = (): void => logout({ returnTo: window.location.origin })
 
   return (
-    <button onClick={(): void => logout({ returnTo: window.location.origin })}>
+    <a className={styles.anchor} onClick={handleClick}>
       Log Out
-    </button>
+    </a>
   )
 }
 
