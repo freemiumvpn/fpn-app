@@ -3,11 +3,6 @@
 @import "../../../shared/styles/palette.scss";
 
 .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-
     background-color: $color-mint-tulip;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(5px);
@@ -40,10 +35,17 @@
     }
 }
 
+.logo {
+    $size:40px;
+    width: $size;
+    height: $size;
+    border-radius: 0;
+    box-shadow: none;
+}
+
 .signInActions {
     display: flex;
     align-items: center;
-
 }
 
 .link {
