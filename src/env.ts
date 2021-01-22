@@ -39,6 +39,8 @@ enum EnvKey {
   AUTH0_CLIENT_ID = 'AUTH0_CLIENT_ID',
   AUTH0_CLIENT_SECRET = 'AUTH0_CLIENT_SECRET',
   AUTH0_REDIRECT_URI = 'AUTH0_REDIRECT_URI',
+  AUTH0_AUDIENCE = 'AUTH0_AUDIENCE',
+  AUTH0_SCOPE = 'AUTH0_SCOPE',
 
   /**
    * OFFER WALL
@@ -53,6 +55,8 @@ interface Env {
     clientId: string
     clientSecret: string
     redirectUri: string
+    audience: string
+    scope: string
   }
   offerWall: {
     clientSecret: string
@@ -67,6 +71,8 @@ const createEnvVars = (env = parseEnv()): Env => {
       clientId: env.AUTH0_CLIENT_ID || '',
       clientSecret: env.AUTH0_CLIENT_SECRET || '',
       redirectUri: env.AUTH0_REDIRECT_URI || '',
+      audience: env.AUTH0_AUDIENCE || '',
+      scope: env.AUTH0_SCOPE || '',
     },
     offerWall: {
       clientSecret: env.OFFER_WALL_CLIENT_SECRET || '',
