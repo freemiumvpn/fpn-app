@@ -43,6 +43,11 @@ enum EnvKey {
   AUTH0_SCOPE = 'AUTH0_SCOPE',
 
   /**
+   * GQL
+   */
+  GQL_URL = 'GQL_URL',
+
+  /**
    * OFFER WALL
    */
   OFFER_WALL_CLIENT_SECRET = 'OFFER_WALL_CLIENT_SECRET',
@@ -62,6 +67,9 @@ interface Env {
     clientSecret: string
     redirectUri: string
   }
+  gql: {
+    url: string
+  }
 }
 
 const createEnvVars = (env = parseEnv()): Env => {
@@ -73,6 +81,9 @@ const createEnvVars = (env = parseEnv()): Env => {
       redirectUri: env.AUTH0_REDIRECT_URI || '',
       audience: env.AUTH0_AUDIENCE || '',
       scope: env.AUTH0_SCOPE || '',
+    },
+    gql: {
+      url: env.GQL_URL || '',
     },
     offerWall: {
       clientSecret: env.OFFER_WALL_CLIENT_SECRET || '',
