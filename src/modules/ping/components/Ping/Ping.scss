@@ -1,0 +1,31 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f3eeee;
+}
+
+.legend {
+    font-size: 14px;
+    color: gray;
+}
+
+.indicator {
+    margin: 8px;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background-color: gray
+}
+
+.loading {
+    background-color: orange
+}
+
+.error {
+    background-color: red
+}
+
+.success {
+    background-color: green
+}
