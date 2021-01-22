@@ -32,6 +32,8 @@ const Routes: React.FC = () => {
         domain={env.auth0.domain}
         clientId={env.auth0.clientId}
         redirectUri={env.auth0.redirectUri}
+        audience={env.auth0.audience}
+        scope={env.auth0.scope}
       >
         <Switch>
           <Route component={LoginPage} path={Path.LOGIN} />
