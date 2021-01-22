@@ -1,14 +1,6 @@
 import React from 'react'
 import { BehaviorSubject } from 'rxjs'
 
-export enum AuthEventType {
-  ACCESS_TOKEN_SET = 'ACCESS_TOKEN_SET',
-}
-
-export interface AuthEventData {
-  token?: string
-}
-
 interface AuthEvent {
   token: string
 }
