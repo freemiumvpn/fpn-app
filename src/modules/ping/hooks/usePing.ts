@@ -10,18 +10,18 @@ const PING = gql`
   }
 `
 
-interface UsePing {
-  data: string
-  error: ApolloError | undefined
-  loading: boolean
-  status: PingStatus
-}
-
 export enum PingStatus {
   NONE,
   ERROR,
   LOADING,
   SUCCESS,
+}
+
+interface UsePing {
+  data: string
+  error: ApolloError | undefined
+  loading: boolean
+  status: PingStatus
 }
 
 const usePing = (): UsePing => {
@@ -44,14 +44,12 @@ const usePing = (): UsePing => {
     })
   }
 
-  let dataValue = ''
   if (data) {
     status = PingStatus.SUCCESS
-    dataValue = data.ping || ''
   }
 
   return {
-    data: dataValue,
+    data: data ? data.ping : '',
     error,
     loading,
     status,

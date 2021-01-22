@@ -6,7 +6,7 @@ import usePing, { PingStatus } from '../../hooks/usePing'
 import styles from './Ping.scss'
 
 const Ping: React.FC = () => {
-  const { data, loading, error, status } = usePing()
+  const { status } = usePing()
 
   const legend = {
     [PingStatus.NONE]: 'Pinging the server ...',
