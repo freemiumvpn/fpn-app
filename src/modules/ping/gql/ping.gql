@@ -1,0 +1,6 @@
+query ping {
+  ping {
+    message
+    date
+  }
+}
