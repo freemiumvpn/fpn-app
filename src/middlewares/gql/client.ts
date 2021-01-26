@@ -13,7 +13,7 @@ import { getEnvVars } from '../../env'
 import {
   localStorageContext,
   LocalStorageKey,
-} from '../localstorage/localStorage'
+} from '../localStorage/localStorage'
 
 const createGqlClient = (): ApolloClient<NormalizedCacheObject> => {
   const {

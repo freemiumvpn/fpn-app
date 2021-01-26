@@ -1,9 +1,10 @@
 import { ErrorHandler } from '../error/ErrorHandler'
+
 import {
   createLocalStorage,
   LocalStorageKey,
   LOCAL_STORAGE_ID,
-} from '../localStorage/localStorage'
+} from './localStorage'
 
 describe('localStorage', () => {
   it('should set values to storage', () => {
