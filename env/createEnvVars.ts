@@ -6,6 +6,8 @@ const parseEnv = (env: NodeJS.ProcessEnv, keys: string[]): object => {
       return current
     }
 
+    // eslint-disable-next-line no-console
+    console.log(`Adding ${nextKey} to env`)
     return {
       ...current,
       [nextKey]: env[nextKey],

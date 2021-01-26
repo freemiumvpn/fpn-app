@@ -5,7 +5,7 @@ DOCKER_CONTAINER_NAME=fpn-app
 DOCKER_REPOSITORY=$(DOCKER_NAMESPACE)/$(DOCKER_CONTAINER_NAME)
 SHA8=$(shell echo $(GITHUB_SHA) | cut -c1-8)
 
-docker-image-local:
+docker-image:
 	docker build --rm -t $(DOCKER_REPOSITORY):local .
 
 ci-docker-auth:
