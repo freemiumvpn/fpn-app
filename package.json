@@ -16,6 +16,7 @@
     "test:watch": "jest --watch --no-coverage",
     "test:coverage": "jest --coverage",
     "test:bundlesize": "bundlesize --config config/bundlesize/config.json",
+    "test:types": "tsc --noEmit",
     "types:sass": "npm run clean && tsm src --camelCase",
     "types:sass:watch": "npm run types:sass -- --watch"
   },
