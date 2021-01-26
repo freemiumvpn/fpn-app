@@ -9,8 +9,9 @@ RUN npm ci
 
 ADD . /work_dir/
 
+RUN npm run test:types
 RUN npm run lint
-RUN npm test
+RUN npm run test
 
 ENV NODE_ENV production
 

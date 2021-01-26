@@ -1,5 +1,4 @@
-import { useCallback, useState } from 'react'
-import React from 'react'
+import React, { useCallback, useState } from 'react'
 
 import HomePricingBase from './HomePricing.base'
 

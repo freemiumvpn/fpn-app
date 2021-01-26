@@ -1,19 +1,45 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-import createAuthContext from './auth/createAuthContext'
-import createErrorContext from './error/createErrorContext'
-import createGqlContext from './gql/createGqlContext'
+import { errorHandler } from '../middlewares/error/ErrorHandler'
 
-const context = {
+import createAuthContext, { AuthContext } from './auth/createAuthContext'
+import createSubscriptions from './createSubscriptions'
+import createErrorContext, { ErrorContext } from './error/createErrorContext'
+import createGqlContext, { GqlContext } from './gql/createGqlContext'
+import createLocalStorageContext, {
+  LocalStorageContext,
+} from './localStorage/createLocalStorageContext'
+
+interface AppContext {
+  auth: AuthContext
+  gql: GqlContext
+  error: ErrorContext
+  localStorage: LocalStorageContext
+}
+
+const appContext = {
   auth: createAuthContext(),
   gql: createGqlContext(),
   error: createErrorContext(),
+  localStorage: createLocalStorageContext(errorHandler),
 }
 
-const Context = React.createContext(context)
+const AppContext = React.createContext(appContext)
 
 const ContextProvider: React.FC = props => {
-  return <Context.Provider value={context}>{props.children}</Context.Provider>
+  useEffect(() => {
+    const subscriptions = createSubscriptions(appContext)
+
+    return (): void => {
+      subscriptions.forEach(s => s.unsubscribe())
+    }
+  }, [])
+
+  return (
+    <AppContext.Provider value={appContext}>
+      {props.children}
+    </AppContext.Provider>
+  )
 }
 
-export { Context as default, ContextProvider }
+export { AppContext as Context, AppContext, ContextProvider }

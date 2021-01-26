@@ -1,0 +1,6 @@
+subscription ping($minutes: Int!) {
+  ping(minutes: $minutes) {
+    date
+    message
+  }
+}

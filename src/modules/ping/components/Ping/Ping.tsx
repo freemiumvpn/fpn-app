@@ -6,7 +6,7 @@ import usePing, { PingStatus } from '../../hooks/usePing'
 import styles from './Ping.scss'
 
 const Ping: React.FC = () => {
-  const { status } = usePing()
+  const { status, data } = usePing()
 
   const legend = {
     [PingStatus.NONE]: 'Pinging the server ...',
@@ -17,14 +17,18 @@ const Ping: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.legend}>{legend}</div>
-      <div
-        className={classnames(styles.indicator, {
-          [styles.error]: status === PingStatus.ERROR,
-          [styles.loading]: status === PingStatus.LOADING,
-          [styles.success]: status === PingStatus.SUCCESS,
-        })}
-      />
+      <div className={styles.display}>
+        <div className={styles.legend}>{legend}</div>
+        <div
+          className={classnames(styles.indicator, {
+            [styles.error]: status === PingStatus.ERROR,
+            [styles.loading]: status === PingStatus.LOADING,
+            [styles.success]: status === PingStatus.SUCCESS,
+          })}
+        />
+      </div>
+
+      {data && <div className={styles.date}>Last updated: {data.date}</div>}
     </div>
   )
 }

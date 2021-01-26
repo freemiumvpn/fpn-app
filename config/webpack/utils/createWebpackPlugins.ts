@@ -2,8 +2,7 @@ import path from 'path'
 
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-import webpack from 'webpack'
-import { EnvironmentPlugin, Plugin } from 'webpack'
+import webpack, { EnvironmentPlugin, Plugin } from 'webpack'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import DotEnv from 'dotenv-webpack'
 

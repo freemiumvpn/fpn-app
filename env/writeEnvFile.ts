@@ -1,8 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 
-import createEnvVars from './createEnvVars'
-import { createEnvFile } from './createEnvVars'
+import createEnvVars, { createEnvFile } from './createEnvVars'
 
 const writeEnvFile = async (path: string): Promise<void> => {
   const envVars = createEnvVars(path)

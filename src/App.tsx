@@ -7,7 +7,7 @@ import Routes from './routes/routes'
 import SplashPage from './pages/Splash/Splash'
 import AuthProvider from './modules/auth/AuthProvider'
 import { ContextProvider } from './context/Context'
-import gqlClient from './context/gql/client'
+import gqlClient from './middlewares/gql/client'
 import { getEnvVars } from './env'
 
 const App: React.FC = () => {
