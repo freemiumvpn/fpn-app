@@ -8,10 +8,12 @@ interface AuthContext {
   auth$: BehaviorSubject<AuthEvent>
 }
 
+const TOKEN_INIT = '@@_TOKEN_NOT_SET_@@'
+
 const createAuthContext = (): AuthContext => {
   return {
-    auth$: new BehaviorSubject<AuthEvent>({ token: '' }),
+    auth$: new BehaviorSubject<AuthEvent>({ token: TOKEN_INIT }),
   }
 }
 
-export default createAuthContext
+export { AuthEvent, AuthContext, createAuthContext as default }

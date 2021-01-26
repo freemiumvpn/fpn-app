@@ -1,23 +1,21 @@
-import { ApolloError } from '@apollo/client'
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject'
 
-export enum ErrorType {
-  GQL_QUERY_PING = 'GQL_QUERY_PING',
-}
-
-interface ErrorEvent {
-  type: ErrorType
-  data: typeof Error | ApolloError
-}
+import {
+  AppError,
+  errorHandler,
+  ErrorHandler,
+} from '../../middlewares/error/ErrorHandler'
 
 interface ErrorContext {
-  error$: BehaviorSubject<ErrorEvent | null>
+  errorHandler: ErrorHandler
+  error$: BehaviorSubject<AppError | null>
 }
 
 const createAuthContext = (): ErrorContext => {
   return {
-    error$: new BehaviorSubject<ErrorEvent | null>(null),
+    errorHandler,
+    error$: new BehaviorSubject<AppError | null>(null),
   }
 }
 
-export default createAuthContext
+export { ErrorContext, createAuthContext as default }
