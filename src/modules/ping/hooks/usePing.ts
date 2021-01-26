@@ -1,14 +1,12 @@
-import { ApolloError, gql, useQuery } from '@apollo/client'
+import { ApolloError } from '@apollo/client'
 import { useContext } from 'react'
 
-import Context from '../../../context/Context'
-import { ErrorType } from '../../../context/error/createErrorContext'
-
-const PING = gql`
-  query test {
-    ping
-  }
-`
+import { ErrorType } from '../../../middlewares/error/ErrorType'
+import {
+  Ping,
+  usePingSubscription,
+} from '../../../generated/graphql/schema.graphql'
+import { AppContext } from '../../../context/Context'
 
 export enum PingStatus {
   NONE,
@@ -18,7 +16,7 @@ export enum PingStatus {
 }
 
 interface UsePing {
-  data: string
+  data: Ping | null
   error: ApolloError | undefined
   loading: boolean
   status: PingStatus
@@ -27,9 +25,13 @@ interface UsePing {
 const usePing = (): UsePing => {
   const {
     error: { error$ },
-  } = useContext(Context)
+  } = useContext(AppContext)
 
-  const { loading, data, error } = useQuery(PING)
+  const { loading, data, error } = usePingSubscription({
+    variables: {
+      minutes: 1,
+    },
+  })
 
   let status = PingStatus.NONE
   if (loading) {
@@ -40,7 +42,7 @@ const usePing = (): UsePing => {
     status = PingStatus.ERROR
     error$.next({
       type: ErrorType.GQL_QUERY_PING,
-      data: error,
+      source: error,
     })
   }
 
@@ -49,10 +51,10 @@ const usePing = (): UsePing => {
   }
 
   return {
-    data: data ? data.ping : '',
     error,
     loading,
     status,
+    data: data ? data.ping : null,
   }
 }
 

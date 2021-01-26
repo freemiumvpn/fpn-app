@@ -43,48 +43,47 @@ export enum CacheControlScope {
 }
 
 
-export type PingQueryVariables = Exact<{ [key: string]: never; }>;
+export type PingSubscriptionVariables = Exact<{
+  minutes: Scalars['Int'];
+}>;
 
 
-export type PingQuery = (
-  { __typename?: 'Query' }
+export type PingSubscription = (
+  { __typename?: 'Subscription' }
   & { ping: (
     { __typename?: 'Ping' }
-    & Pick<Ping, 'message' | 'date'>
+    & Pick<Ping, 'date' | 'message'>
   ) }
 );
 
 
 export const PingDocument = gql`
-    query ping {
-  ping {
-    message
+    subscription ping($minutes: Int!) {
+  ping(minutes: $minutes) {
     date
+    message
   }
 }
     `;
 
 /**
- * __usePingQuery__
+ * __usePingSubscription__
  *
- * To run a query within a React component, call `usePingQuery` and pass it any options that fit your needs.
- * When your component renders, `usePingQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `usePingSubscription` and pass it any options that fit your needs.
+ * When your component renders, `usePingSubscription` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ * @param baseOptions options that will be passed into the subscription, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = usePingQuery({
+ * const { data, loading, error } = usePingSubscription({
  *   variables: {
+ *      minutes: // value for 'minutes'
  *   },
  * });
  */
-export function usePingQuery(baseOptions?: Apollo.QueryHookOptions<PingQuery, PingQueryVariables>) {
-        return Apollo.useQuery<PingQuery, PingQueryVariables>(PingDocument, baseOptions);
+export function usePingSubscription(baseOptions: Apollo.SubscriptionHookOptions<PingSubscription, PingSubscriptionVariables>) {
+        return Apollo.useSubscription<PingSubscription, PingSubscriptionVariables>(PingDocument, baseOptions);
       }
-export function usePingLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PingQuery, PingQueryVariables>) {
-          return Apollo.useLazyQuery<PingQuery, PingQueryVariables>(PingDocument, baseOptions);
-        }
-export type PingQueryHookResult = ReturnType<typeof usePingQuery>;
-export type PingLazyQueryHookResult = ReturnType<typeof usePingLazyQuery>;
-export type PingQueryResult = Apollo.QueryResult<PingQuery, PingQueryVariables>;
+export type PingSubscriptionHookResult = ReturnType<typeof usePingSubscription>;
+export type PingSubscriptionResult = Apollo.SubscriptionResult<PingSubscription>;

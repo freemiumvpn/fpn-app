@@ -1,3 +1,4 @@
+import { logger } from './middlewares/logger/Logger'
 import memoise from './shared/utils/memoise'
 
 /***
@@ -17,7 +18,7 @@ const parseEnv = (
     try {
       injectedEnv = JSON.parse(window.atob(env))
     } catch (error) {
-      console.log('Failed to parse env vars', { env }, error)
+      logger.error('Failed to parse env vars', { env }, error)
     }
   }
 
@@ -46,6 +47,7 @@ enum EnvKey {
    * GQL
    */
   GQL_URL = 'GQL_URL',
+  GQL_WEB_SOCKET_URL = 'GQL_WEB_SOCKET_URL',
 
   /**
    * OFFER WALL
@@ -69,6 +71,7 @@ interface Env {
   }
   gql: {
     url: string
+    webSocketUrl: string
   }
 }
 
@@ -84,6 +87,7 @@ const createEnvVars = (env = parseEnv()): Env => {
     },
     gql: {
       url: env.GQL_URL || '',
+      webSocketUrl: env.GQL_WEB_SOCKET_URL || '',
     },
     offerWall: {
       clientSecret: env.OFFER_WALL_CLIENT_SECRET || '',

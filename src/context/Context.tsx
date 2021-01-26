@@ -10,25 +10,25 @@ import createLocalStorageContext, {
   LocalStorageContext,
 } from './localStorage/createLocalStorageContext'
 
-interface Context {
+interface AppContext {
   auth: AuthContext
   gql: GqlContext
   error: ErrorContext
   localStorage: LocalStorageContext
 }
 
-const context = {
+const appContext = {
   auth: createAuthContext(),
   gql: createGqlContext(),
   error: createErrorContext(),
   localStorage: createLocalStorageContext(errorHandler),
 }
 
-const ReactContext = React.createContext(context)
+const AppContext = React.createContext(appContext)
 
 const ContextProvider: React.FC = props => {
   useEffect(() => {
-    const subscriptions = createSubscriptions(context)
+    const subscriptions = createSubscriptions(appContext)
 
     return (): void => {
       subscriptions.forEach(s => s.unsubscribe())
@@ -36,10 +36,10 @@ const ContextProvider: React.FC = props => {
   }, [])
 
   return (
-    <ReactContext.Provider value={context}>
+    <AppContext.Provider value={appContext}>
       {props.children}
-    </ReactContext.Provider>
+    </AppContext.Provider>
   )
 }
 
-export { Context, ReactContext as default, ContextProvider }
+export { AppContext as Context, AppContext, ContextProvider }

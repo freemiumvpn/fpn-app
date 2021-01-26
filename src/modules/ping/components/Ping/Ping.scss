@@ -1,8 +1,16 @@
 .container {
+    padding: 5px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #f3eeee;
+}
+
+.display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .legend {
@@ -11,21 +19,61 @@
 }
 
 .indicator {
-    margin: 8px;
+    margin: 4px;
     width: 10px;
     height: 10px;
-    border-radius: 100%;
-    background-color: gray
+    background: gray;
+    border-radius: 50%;
+    position: relative;
 }
 
-.loading {
-    background-color: orange
+.indicator:before {
+    animation: pulse 2s infinite ease-in-out;
+    content: "";
+    display: block;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
 }
 
-.error {
-    background-color: red
+.indicator.green,
+.indicator.green:before {
+    background: #2bc636;
+    animation-delay: 0s;
 }
 
-.success {
-    background-color: green
+.indicator.loading,
+.indicator.loading:before {
+    background: orange;
+    animation-delay: 0s;
+}
+
+.indicator.error,
+.indicator.error:before {
+    background: red;
+    animation-delay: 0s;
+}
+
+.indicator.success,
+.indicator.success:before {
+    background-color: green;
+    animation-delay: 0s;
+}
+
+.date {
+    color: gray;
+    font-size: 10px;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.5);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
 }

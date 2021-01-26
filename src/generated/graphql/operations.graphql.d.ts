@@ -1,5 +1,5 @@
 
-declare module '*/ping.gql' {
+declare module '*/pingSubscription.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const ping: DocumentNode;

@@ -2,7 +2,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import React, { useEffect } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 
-import Context from '../../context/Context'
+import { AppContext } from '../../context/Context'
 import { getEnvVars } from '../../env'
 import AuthProfile from '../../modules/auth/AuthProfile/AuthProfile'
 import Header from '../../modules/brand/Header/Header'
@@ -15,7 +15,7 @@ import styles from './User.scss'
 const UserPage: React.FC = () => {
   const {
     auth: { auth$ },
-  } = React.useContext(Context)
+  } = React.useContext(AppContext)
   const { isAuthenticated, isLoading, getAccessTokenSilently } = useAuth0()
 
   useEffect(() => {
