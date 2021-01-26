@@ -9,7 +9,7 @@ RUN npm ci
 
 ADD . /work_dir/
 
-RUN npm test:types
+RUN npm run test:types
 RUN npm run lint
 RUN npm run test
 
