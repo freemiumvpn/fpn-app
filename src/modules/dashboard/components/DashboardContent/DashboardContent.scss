@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.title {
+    padding: 20px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
+.button {
+    margin: 10px
+}
+
+.credentials {
+    white-space: pre-line;
+    max-height: 400px;
+    overflow: scroll;
+    background-color: beige;
+    padding: 20px;
+    margin: 20px;
+}

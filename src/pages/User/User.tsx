@@ -1,16 +1,14 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import React, { useEffect } from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 import { AppContext } from '../../context/Context'
 import { getEnvVars } from '../../env'
-import AuthProfile from '../../modules/auth/AuthProfile/AuthProfile'
 import Header from '../../modules/brand/Header/Header'
+import { Dashboard } from '../../modules/dashboard/components/Dashboard/Dashboard'
 import Ping from '../../modules/ping/components/Ping/Ping'
 import { Path } from '../../routes/routes'
 import SplashPage from '../Splash/Splash'
-
-import styles from './User.scss'
 
 const UserPage: React.FC = () => {
   const {
@@ -37,14 +35,11 @@ const UserPage: React.FC = () => {
   }
 
   return (
-    <div>
+    <>
       <Ping />
       <Header />
-      <section className={styles.section}>
-        <AuthProfile />
-        <Link to={Path.SURVEY}>Survey</Link>
-      </section>
-    </div>
+      <Dashboard />
+    </>
   )
 }
 
