@@ -41,7 +41,7 @@ const usePing = (): UsePing => {
   if (error) {
     status = PingStatus.ERROR
     error$.next({
-      type: ErrorType.GQL_QUERY_PING,
+      type: ErrorType.GQL_SUBSCRIPTION_PING,
       source: error,
     })
   }

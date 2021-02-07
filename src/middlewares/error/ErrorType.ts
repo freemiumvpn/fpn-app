@@ -1,5 +1,9 @@
 enum ErrorType {
-  GQL_QUERY_PING = 'GQL_QUERY_PING',
+  /**
+   * GQL
+   */
+  GQL_SUBSCRIPTION_PING = 'GQL_SUBSCRIPTION_PING',
+  GQL_SUBSCRIPTION_VPN = 'GQL_SUBSCRIPTION_VPN',
 
   /**
    * LocalStorage
