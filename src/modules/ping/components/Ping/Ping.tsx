@@ -9,10 +9,10 @@ const Ping: React.FC = () => {
   const { status, data } = usePing()
 
   const legend = {
-    [PingStatus.NONE]: 'Pinging the server ...',
+    [PingStatus.NONE]: 'Waiting the server ...',
     [PingStatus.ERROR]: 'Failed to connect to server',
     [PingStatus.LOADING]: 'Waiting for the server ...',
-    [PingStatus.SUCCESS]: 'Connected to the server',
+    [PingStatus.SUCCESS]: 'Connected',
   }[status]
 
   return (

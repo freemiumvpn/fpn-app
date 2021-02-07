@@ -8,12 +8,15 @@ import {
 import { WebSocketLink } from '@apollo/client/link/ws'
 import { getMainDefinition } from '@apollo/client/utilities'
 import { ConnectionParams } from 'subscriptions-transport-ws'
+import { setContext } from '@apollo/client/link/context'
 
 import { getEnvVars } from '../../env'
 import {
   localStorageContext,
   LocalStorageKey,
 } from '../localStorage/localStorage'
+
+import { createRequestHeaders } from './utils/createRequestHeaders'
 
 const createGqlClient = (): ApolloClient<NormalizedCacheObject> => {
   const {
@@ -24,6 +27,14 @@ const createGqlClient = (): ApolloClient<NormalizedCacheObject> => {
     uri: url,
   })
 
+  const authLink = setContext(() => {
+    const token = localStorageContext.get(LocalStorageKey.ACCESS_TOKEN)
+
+    return {
+      headers: createRequestHeaders(token),
+    }
+  })
+
   const wsLink = new WebSocketLink({
     uri: webSocketUrl,
     options: {
@@ -31,13 +42,7 @@ const createGqlClient = (): ApolloClient<NormalizedCacheObject> => {
       connectionParams: (): ConnectionParams => {
         const token = localStorageContext.get(LocalStorageKey.ACCESS_TOKEN)
 
-        return {
-          req: {
-            headers: {
-              authorization: `Bearer ${token}`,
-            },
-          },
-        }
+        return createRequestHeaders(token)
       },
     },
   })
@@ -51,8 +56,9 @@ const createGqlClient = (): ApolloClient<NormalizedCacheObject> => {
       )
     },
     wsLink,
-    httpLink
+    authLink.concat(httpLink)
   )
+
   return new ApolloClient({
     link: splitLink,
     cache: new InMemoryCache(),

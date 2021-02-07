@@ -10,7 +10,7 @@ describe('ErrorHandler', () => {
     const error = new Error('Custom error')
 
     const appError: AppError = {
-      type: ErrorType.GQL_QUERY_PING,
+      type: ErrorType.GQL_SUBSCRIPTION_PING,
       hint: 'foo',
       source: error,
     }

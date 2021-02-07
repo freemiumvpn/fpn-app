@@ -9,12 +9,14 @@ import createGqlContext, { GqlContext } from './gql/createGqlContext'
 import createLocalStorageContext, {
   LocalStorageContext,
 } from './localStorage/createLocalStorageContext'
+import { createUiContext, UiContext } from './ui/createUiContext'
 
 interface AppContext {
   auth: AuthContext
   gql: GqlContext
   error: ErrorContext
   localStorage: LocalStorageContext
+  ui: UiContext
 }
 
 const appContext = {
@@ -22,6 +24,7 @@ const appContext = {
   gql: createGqlContext(),
   error: createErrorContext(),
   localStorage: createLocalStorageContext(errorHandler),
+  ui: createUiContext(),
 }
 
 const AppContext = React.createContext(appContext)
