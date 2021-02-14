@@ -11,9 +11,10 @@ const downloadToFile = (
   filename: string,
   contentType: string
 ): void => {
-  const a = document.createElement('a')
   const file = new Blob([content], { type: contentType })
 
+  const a = document.createElement('a')
+  a.target = '_self'
   a.href = URL.createObjectURL(file)
   a.download = filename
   a.click()
