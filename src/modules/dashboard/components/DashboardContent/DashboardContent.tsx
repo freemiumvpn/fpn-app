@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Button from '@material-ui/core/Button'
 import { useAuth0 } from '@auth0/auth0-react'
+import { saveAs } from 'file-saver'
 
 import { useVpnCreateSessionMutation } from '../../../../generated/graphql/schema.graphql'
 
@@ -12,14 +13,7 @@ const downloadToFile = (
   contentType: string
 ): void => {
   const file = new Blob([content], { type: contentType })
-
-  const a = document.createElement('a')
-  a.target = '_self'
-  a.href = URL.createObjectURL(file)
-  a.download = filename
-  a.click()
-
-  URL.revokeObjectURL(a.href)
+  saveAs(file, filename)
 }
 
 const DashboardContent: React.FC = () => {
