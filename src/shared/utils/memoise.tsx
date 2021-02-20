@@ -1,14 +1,16 @@
-function memoise<Value>(fn: () => Value): () => Value {
+function memoise<Value>(
+  fn: (...args: string[]) => Value
+): (...args: string[]) => Value {
   let called = false
   let cache: Value
 
-  return (): Value => {
+  return (...args): Value => {
     if (called) {
       return cache
     }
 
     called = true
-    cache = fn()
+    cache = fn(...args)
 
     return cache
   }
