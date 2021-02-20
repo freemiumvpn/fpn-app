@@ -18,6 +18,7 @@ const UserPage: React.FC = () => {
 
   useEffect(() => {
     if (isLoading || !isAuthenticated) return
+
     const {
       auth0: { audience, scope },
     } = getEnvVars()
@@ -33,6 +34,8 @@ const UserPage: React.FC = () => {
   if (!isAuthenticated) {
     return <Redirect to={Path.LOGIN} />
   }
+
+  return <Redirect to={Path.WELCOME} />
 
   return (
     <>
