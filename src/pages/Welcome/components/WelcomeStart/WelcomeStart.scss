@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.logo {
+    max-height: 300px;
+    max-width: 300px;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.legend {
+    margin-bottom: 20px;
+}
