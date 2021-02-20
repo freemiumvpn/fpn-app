@@ -10,6 +10,7 @@ import PowerIcon from '@material-ui/icons/Power'
 
 import styles from './Welcome.scss'
 import { WelcomeStart } from './components/WelcomeStart/WelcomeStart'
+import { WelcomeInstall } from './components/WelcomeInstall/WelcomeInstall'
 
 const getSteps = (): string[] => {
   return ['Start', 'Install', 'Connect']
@@ -20,7 +21,7 @@ const getStepContent = (step: number): JSX.Element | null => {
     case 0:
       return <WelcomeStart />
     case 1:
-      return null
+      return <WelcomeInstall />
     case 2:
       return null
     default:
