@@ -51,11 +51,19 @@ const WelcomeInstall: React.FC = () => {
         {icon && (
           <>
             <p className={styles.legend}>
-              This link will redirect you to an <strong>Open Source</strong>{' '}
+              This link will redirect you to an{' '}
+              <Link
+                href={url}
+                className={styles.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={handleClick}
+              >
+                Open Source
+              </Link>{' '}
               client.
             </p>
             <Link
-              color="primary"
               href={url}
               target="_blank"
               rel="noopener noreferrer"
