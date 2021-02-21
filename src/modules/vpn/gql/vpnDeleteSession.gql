@@ -1,5 +1,0 @@
-mutation vpnDeleteSession($userId: String!) {
-  vpnDeleteSession(request: {userId: $userId}) {
-    status
-  }
-}
