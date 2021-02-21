@@ -25,12 +25,12 @@ export type Ping = {
 export type Query = {
   __typename?: 'Query';
   ping: Ping;
+  vpnSignedUrl: Scalars['String'];
 };
 
 export type Subscription = {
   __typename?: 'Subscription';
   ping: Ping;
-  vpn: VpnSession;
 };
 
 
@@ -66,47 +66,6 @@ export enum VpnSessionStatus {
   Error = 'ERROR'
 }
 
-export type VpnSession = {
-  __typename?: 'VpnSession';
-  id: Scalars['String'];
-  status: VpnSessionStatus;
-};
-
-export type Mutation = {
-  __typename?: 'Mutation';
-  vpnCreateSession: VpnCreateSessionResponse;
-  vpnDeleteSession: VpnDeleteSessionResponse;
-};
-
-
-export type MutationVpnCreateSessionArgs = {
-  request: VpnCreateSessionRequest;
-};
-
-
-export type MutationVpnDeleteSessionArgs = {
-  request: VpnDeleteSessionRequest;
-};
-
-export type VpnCreateSessionRequest = {
-  userId: Scalars['String'];
-};
-
-export type VpnCreateSessionResponse = {
-  __typename?: 'VpnCreateSessionResponse';
-  credentials: Scalars['String'];
-  status: VpnSessionStatus;
-};
-
-export type VpnDeleteSessionRequest = {
-  userId: Scalars['String'];
-};
-
-export type VpnDeleteSessionResponse = {
-  __typename?: 'VpnDeleteSessionResponse';
-  status: VpnSessionStatus;
-};
-
 export enum CacheControlScope {
   Public = 'PUBLIC',
   Private = 'PRIVATE'
@@ -126,41 +85,12 @@ export type PingSubscription = (
   ) }
 );
 
-export type VpnCreateSessionMutationVariables = Exact<{
-  userId: Scalars['String'];
-}>;
+export type VpnSignedUrlQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type VpnCreateSessionMutation = (
-  { __typename?: 'Mutation' }
-  & { vpnCreateSession: (
-    { __typename?: 'VpnCreateSessionResponse' }
-    & Pick<VpnCreateSessionResponse, 'credentials' | 'status'>
-  ) }
-);
-
-export type VpnDeleteSessionMutationVariables = Exact<{
-  userId: Scalars['String'];
-}>;
-
-
-export type VpnDeleteSessionMutation = (
-  { __typename?: 'Mutation' }
-  & { vpnDeleteSession: (
-    { __typename?: 'VpnDeleteSessionResponse' }
-    & Pick<VpnDeleteSessionResponse, 'status'>
-  ) }
-);
-
-export type VpnSubscriptionVariables = Exact<{ [key: string]: never; }>;
-
-
-export type VpnSubscription = (
-  { __typename?: 'Subscription' }
-  & { vpn: (
-    { __typename?: 'VpnSession' }
-    & Pick<VpnSession, 'id' | 'status'>
-  ) }
+export type VpnSignedUrlQuery = (
+  { __typename?: 'Query' }
+  & Pick<Query, 'vpnSignedUrl'>
 );
 
 
@@ -194,97 +124,33 @@ export function usePingSubscription(baseOptions: Apollo.SubscriptionHookOptions<
       }
 export type PingSubscriptionHookResult = ReturnType<typeof usePingSubscription>;
 export type PingSubscriptionResult = Apollo.SubscriptionResult<PingSubscription>;
-export const VpnCreateSessionDocument = gql`
-    mutation vpnCreateSession($userId: String!) {
-  vpnCreateSession(request: {userId: $userId}) {
-    credentials
-    status
-  }
-}
-    `;
-export type VpnCreateSessionMutationFn = Apollo.MutationFunction<VpnCreateSessionMutation, VpnCreateSessionMutationVariables>;
-
-/**
- * __useVpnCreateSessionMutation__
- *
- * To run a mutation, you first call `useVpnCreateSessionMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useVpnCreateSessionMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [vpnCreateSessionMutation, { data, loading, error }] = useVpnCreateSessionMutation({
- *   variables: {
- *      userId: // value for 'userId'
- *   },
- * });
- */
-export function useVpnCreateSessionMutation(baseOptions?: Apollo.MutationHookOptions<VpnCreateSessionMutation, VpnCreateSessionMutationVariables>) {
-        return Apollo.useMutation<VpnCreateSessionMutation, VpnCreateSessionMutationVariables>(VpnCreateSessionDocument, baseOptions);
-      }
-export type VpnCreateSessionMutationHookResult = ReturnType<typeof useVpnCreateSessionMutation>;
-export type VpnCreateSessionMutationResult = Apollo.MutationResult<VpnCreateSessionMutation>;
-export type VpnCreateSessionMutationOptions = Apollo.BaseMutationOptions<VpnCreateSessionMutation, VpnCreateSessionMutationVariables>;
-export const VpnDeleteSessionDocument = gql`
-    mutation vpnDeleteSession($userId: String!) {
-  vpnDeleteSession(request: {userId: $userId}) {
-    status
-  }
-}
-    `;
-export type VpnDeleteSessionMutationFn = Apollo.MutationFunction<VpnDeleteSessionMutation, VpnDeleteSessionMutationVariables>;
-
-/**
- * __useVpnDeleteSessionMutation__
- *
- * To run a mutation, you first call `useVpnDeleteSessionMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useVpnDeleteSessionMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [vpnDeleteSessionMutation, { data, loading, error }] = useVpnDeleteSessionMutation({
- *   variables: {
- *      userId: // value for 'userId'
- *   },
- * });
- */
-export function useVpnDeleteSessionMutation(baseOptions?: Apollo.MutationHookOptions<VpnDeleteSessionMutation, VpnDeleteSessionMutationVariables>) {
-        return Apollo.useMutation<VpnDeleteSessionMutation, VpnDeleteSessionMutationVariables>(VpnDeleteSessionDocument, baseOptions);
-      }
-export type VpnDeleteSessionMutationHookResult = ReturnType<typeof useVpnDeleteSessionMutation>;
-export type VpnDeleteSessionMutationResult = Apollo.MutationResult<VpnDeleteSessionMutation>;
-export type VpnDeleteSessionMutationOptions = Apollo.BaseMutationOptions<VpnDeleteSessionMutation, VpnDeleteSessionMutationVariables>;
-export const VpnDocument = gql`
-    subscription vpn {
-  vpn {
-    id
-    status
-  }
+export const VpnSignedUrlDocument = gql`
+    query vpnSignedUrl {
+  vpnSignedUrl
 }
     `;
 
 /**
- * __useVpnSubscription__
+ * __useVpnSignedUrlQuery__
  *
- * To run a query within a React component, call `useVpnSubscription` and pass it any options that fit your needs.
- * When your component renders, `useVpnSubscription` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useVpnSignedUrlQuery` and pass it any options that fit your needs.
+ * When your component renders, `useVpnSignedUrlQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
- * @param baseOptions options that will be passed into the subscription, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useVpnSubscription({
+ * const { data, loading, error } = useVpnSignedUrlQuery({
  *   variables: {
  *   },
  * });
  */
-export function useVpnSubscription(baseOptions?: Apollo.SubscriptionHookOptions<VpnSubscription, VpnSubscriptionVariables>) {
-        return Apollo.useSubscription<VpnSubscription, VpnSubscriptionVariables>(VpnDocument, baseOptions);
+export function useVpnSignedUrlQuery(baseOptions?: Apollo.QueryHookOptions<VpnSignedUrlQuery, VpnSignedUrlQueryVariables>) {
+        return Apollo.useQuery<VpnSignedUrlQuery, VpnSignedUrlQueryVariables>(VpnSignedUrlDocument, baseOptions);
       }
-export type VpnSubscriptionHookResult = ReturnType<typeof useVpnSubscription>;
-export type VpnSubscriptionResult = Apollo.SubscriptionResult<VpnSubscription>;
+export function useVpnSignedUrlLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<VpnSignedUrlQuery, VpnSignedUrlQueryVariables>) {
+          return Apollo.useLazyQuery<VpnSignedUrlQuery, VpnSignedUrlQueryVariables>(VpnSignedUrlDocument, baseOptions);
+        }
+export type VpnSignedUrlQueryHookResult = ReturnType<typeof useVpnSignedUrlQuery>;
+export type VpnSignedUrlLazyQueryHookResult = ReturnType<typeof useVpnSignedUrlLazyQuery>;
+export type VpnSignedUrlQueryResult = Apollo.QueryResult<VpnSignedUrlQuery, VpnSignedUrlQueryVariables>;
