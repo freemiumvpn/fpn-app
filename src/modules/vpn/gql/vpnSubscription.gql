@@ -1,6 +1,0 @@
-subscription vpn {
-  vpn {
-    id
-    status
-  }
-}

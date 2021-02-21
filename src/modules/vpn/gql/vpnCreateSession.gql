@@ -1,6 +1,0 @@
-mutation vpnCreateSession($userId: String!) {
-  vpnCreateSession(request: { userId: $userId }) {
-    credentials
-    status
-  }
-}

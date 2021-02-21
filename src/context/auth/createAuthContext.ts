@@ -16,4 +16,4 @@ const createAuthContext = (): AuthContext => {
   }
 }
 
-export { AuthEvent, AuthContext, createAuthContext as default }
+export { AuthEvent, AuthContext, createAuthContext as default, TOKEN_INIT }
