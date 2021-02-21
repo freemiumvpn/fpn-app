@@ -4,9 +4,6 @@ import { Redirect } from 'react-router-dom'
 
 import { AppContext } from '../../context/Context'
 import { getEnvVars } from '../../env'
-import Header from '../../modules/brand/Header/Header'
-import { Dashboard } from '../../modules/dashboard/components/Dashboard/Dashboard'
-import Ping from '../../modules/ping/components/Ping/Ping'
 import { Path } from '../../routes/routes'
 import SplashPage from '../Splash/Splash'
 
@@ -36,14 +33,6 @@ const UserPage: React.FC = () => {
   }
 
   return <Redirect to={Path.WELCOME} />
-
-  return (
-    <>
-      <Ping />
-      <Header />
-      <Dashboard />
-    </>
-  )
 }
 
 export default UserPage

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import classnames from 'classnames'
 import Button from '@material-ui/core/Button'
 import Stepper from '@material-ui/core/Stepper'
@@ -7,10 +7,15 @@ import StepLabel from '@material-ui/core/StepLabel'
 import ToysIcon from '@material-ui/icons/Toys'
 import CloudDownloadIcon from '@material-ui/icons/CloudDownload'
 import PowerIcon from '@material-ui/icons/Power'
+import { useAuth0 } from '@auth0/auth0-react'
+
+import { getEnvVars } from '../../env'
+import { AppContext } from '../../context/Context'
 
 import styles from './Welcome.scss'
 import { WelcomeStart } from './components/WelcomeStart/WelcomeStart'
 import { WelcomeInstall } from './components/WelcomeInstall/WelcomeInstall'
+import { WelcomeConnect } from './components/WelcomeConnect/WelcomeConnect'
 
 const getSteps = (): string[] => {
   return ['Start', 'Install', 'Connect']
@@ -23,7 +28,7 @@ const getStepContent = (step: number): JSX.Element | null => {
     case 1:
       return <WelcomeInstall />
     case 2:
-      return null
+      return <WelcomeConnect />
     default:
       return null
   }
@@ -59,7 +64,23 @@ const StepIconComponent: React.FC<StepIconProps> = props => {
 }
 
 const WelcomePage: React.FC = () => {
-  const [activeStep, setActiveStep] = React.useState(0)
+  const {
+    auth: { auth$ },
+  } = React.useContext(AppContext)
+  const { isAuthenticated, isLoading, getAccessTokenSilently } = useAuth0()
+
+  useEffect(() => {
+    if (isLoading || !isAuthenticated) return
+
+    const {
+      auth0: { audience, scope },
+    } = getEnvVars()
+    getAccessTokenSilently({ audience, scope }).then(token => {
+      auth$.next({ token })
+    })
+  }, [isLoading, isAuthenticated, getAccessTokenSilently, auth$])
+
+  const [activeStep, setActiveStep] = React.useState(2)
   const steps = getSteps()
 
   const handleNext = (): void => {
