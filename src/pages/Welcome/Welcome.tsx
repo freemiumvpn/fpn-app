@@ -80,7 +80,7 @@ const WelcomePage: React.FC = () => {
     })
   }, [isLoading, isAuthenticated, getAccessTokenSilently, auth$])
 
-  const [activeStep, setActiveStep] = React.useState(2)
+  const [activeStep, setActiveStep] = React.useState(0)
   const steps = getSteps()
 
   const handleNext = (): void => {
