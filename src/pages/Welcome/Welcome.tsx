@@ -8,9 +8,11 @@ import ToysIcon from '@material-ui/icons/Toys'
 import CloudDownloadIcon from '@material-ui/icons/CloudDownload'
 import PowerIcon from '@material-ui/icons/Power'
 import { useAuth0 } from '@auth0/auth0-react'
+import { Redirect } from 'react-router-dom'
 
 import { getEnvVars } from '../../env'
 import { AppContext } from '../../context/Context'
+import { Path } from '../../routes/routes'
 
 import styles from './Welcome.scss'
 import { WelcomeStart } from './components/WelcomeStart/WelcomeStart'
@@ -93,6 +95,10 @@ const WelcomePage: React.FC = () => {
 
   const handleReset = (): void => {
     setActiveStep(0)
+  }
+
+  if (!isAuthenticated) {
+    return <Redirect to={Path.LOGIN} />
   }
 
   return (
