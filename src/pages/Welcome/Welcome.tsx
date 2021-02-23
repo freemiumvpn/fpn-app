@@ -16,6 +16,8 @@ import styles from './Welcome.scss'
 import { WelcomeStart } from './components/WelcomeStart/WelcomeStart'
 import { WelcomeInstall } from './components/WelcomeInstall/WelcomeInstall'
 import { WelcomeConnect } from './components/WelcomeConnect/WelcomeConnect'
+import { Redirect } from 'react-router-dom'
+import { Path } from '../../routes/routes'
 
 const getSteps = (): string[] => {
   return ['Start', 'Install', 'Connect']
@@ -93,6 +95,10 @@ const WelcomePage: React.FC = () => {
 
   const handleReset = (): void => {
     setActiveStep(0)
+  }
+
+  if (!isAuthenticated) {
+    return <Redirect to={Path.LOGIN} />
   }
 
   return (
