@@ -8,16 +8,16 @@ import ToysIcon from '@material-ui/icons/Toys'
 import CloudDownloadIcon from '@material-ui/icons/CloudDownload'
 import PowerIcon from '@material-ui/icons/Power'
 import { useAuth0 } from '@auth0/auth0-react'
+import { Redirect } from 'react-router-dom'
 
 import { getEnvVars } from '../../env'
 import { AppContext } from '../../context/Context'
+import { Path } from '../../routes/routes'
 
 import styles from './Welcome.scss'
 import { WelcomeStart } from './components/WelcomeStart/WelcomeStart'
 import { WelcomeInstall } from './components/WelcomeInstall/WelcomeInstall'
 import { WelcomeConnect } from './components/WelcomeConnect/WelcomeConnect'
-import { Redirect } from 'react-router-dom'
-import { Path } from '../../routes/routes'
 
 const getSteps = (): string[] => {
   return ['Start', 'Install', 'Connect']
