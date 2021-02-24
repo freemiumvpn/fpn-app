@@ -1,4 +1,4 @@
-import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject'
+import { Subject } from 'rxjs/internal/Subject'
 
 import {
   Analytics,
@@ -8,13 +8,13 @@ import {
 
 interface AnalyticsContext {
   analytics: Analytics
-  analytics$: BehaviorSubject<AnalyticsEvent>
+  analytics$: Subject<AnalyticsEvent>
 }
 
 const createAnalyticsContext = (): AnalyticsContext => {
   return {
     analytics,
-    analytics$: new BehaviorSubject<AnalyticsEvent>({ event: '', data: '' }),
+    analytics$: new Subject<AnalyticsEvent>(),
   }
 }
 
