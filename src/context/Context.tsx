@@ -2,6 +2,10 @@ import React, { useEffect } from 'react'
 
 import { errorHandler } from '../middlewares/error/ErrorHandler'
 
+import {
+  AnalyticsContext,
+  createAnalyticsContext,
+} from './analytics/createAnalyticsContext'
 import createAuthContext, { AuthContext } from './auth/createAuthContext'
 import createSubscriptions from './createSubscriptions'
 import createErrorContext, { ErrorContext } from './error/createErrorContext'
@@ -17,6 +21,7 @@ interface AppContext {
   error: ErrorContext
   localStorage: LocalStorageContext
   ui: UiContext
+  analytics: AnalyticsContext
 }
 
 const appContext = {
@@ -25,6 +30,7 @@ const appContext = {
   error: createErrorContext(),
   localStorage: createLocalStorageContext(errorHandler),
   ui: createUiContext(),
+  analytics: createAnalyticsContext(),
 }
 
 const AppContext = React.createContext(appContext)
@@ -32,7 +38,6 @@ const AppContext = React.createContext(appContext)
 const ContextProvider: React.FC = props => {
   useEffect(() => {
     const subscriptions = createSubscriptions(appContext)
-
     return (): void => {
       subscriptions.forEach(s => s.unsubscribe())
     }

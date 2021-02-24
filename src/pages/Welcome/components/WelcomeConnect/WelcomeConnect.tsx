@@ -8,12 +8,14 @@ import { AppContext } from '../../../../context/Context'
 import useObservable from '../../../../shared/hooks/useObservable'
 import { useVpnSignedUrl } from '../../../../modules/vpn/hooks/useVpnSignedUrl'
 import { TOKEN_INIT } from '../../../../context/auth/createAuthContext'
+import { AnalyticsEventType } from '../../../../middlewares/analytics/Analytics'
 
 import styles from './WelcomeConnect.scss'
 
 const WelcomeConnect: React.FC = () => {
   const {
     auth: { auth$ },
+    analytics: { analytics$ },
   } = useContext(AppContext)
   const tokenStore = useObservable(
     auth$.pipe(
@@ -26,6 +28,13 @@ const WelcomeConnect: React.FC = () => {
   )
 
   const { data: url, loading, error } = useVpnSignedUrl(tokenStore.token)
+
+  const handleClick = (): void => {
+    analytics$.next({
+      event: AnalyticsEventType.VPN_DOWNLOAD_CONFIG,
+      data: url,
+    })
+  }
 
   return (
     <div className={styles.container}>
@@ -50,7 +59,12 @@ const WelcomeConnect: React.FC = () => {
         )}
         {url && (
           <>
-            <Link href={url} color="primary" className={styles.link}>
+            <Link
+              href={url}
+              color="primary"
+              className={styles.link}
+              onClick={handleClick}
+            >
               <SettingsIcon className={styles.icon} />
               <p className={styles.legend}>Click to download</p>
             </Link>

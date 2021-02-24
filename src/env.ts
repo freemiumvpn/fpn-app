@@ -69,6 +69,11 @@ interface Env {
     clientSecret: string
     redirectUri: string
   }
+  api: {
+    retry: number
+    retryDelay: number
+    timeout: number
+  }
   gql: {
     url: string
     webSocketUrl: string
@@ -84,6 +89,11 @@ const createEnvVars = (env = parseEnv()): Env => {
       redirectUri: env.AUTH0_REDIRECT_URI || '',
       audience: env.AUTH0_AUDIENCE || '',
       scope: env.AUTH0_SCOPE || '',
+    },
+    api: {
+      retry: 3,
+      retryDelay: 1000,
+      timeout: 1000,
     },
     gql: {
       url: env.GQL_URL || '',

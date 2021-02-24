@@ -13,10 +13,16 @@ enum Path {
   SIGN_UP = '/signup',
   SURVEY = '/survey',
 
+  /**
+   * User Dashboard
+   */
+  USER = '/user',
+  USER_DASHBOARD_PROFILE = '/user/profile',
+  USER_DASHBOARD_VPN = '/user/vpn',
+
   // TODO
   ABOUT = '/about',
   PRICING = '/pricing',
-  USER = '/user',
   WELCOME = '/welcome',
 }
 

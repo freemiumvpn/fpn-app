@@ -13,6 +13,7 @@ import { Redirect } from 'react-router-dom'
 import { getEnvVars } from '../../env'
 import { AppContext } from '../../context/Context'
 import { Path } from '../../routes/routes'
+import { AnalyticsEventType } from '../../middlewares/analytics/Analytics'
 
 import styles from './Welcome.scss'
 import { WelcomeStart } from './components/WelcomeStart/WelcomeStart'
@@ -68,8 +69,16 @@ const StepIconComponent: React.FC<StepIconProps> = props => {
 const WelcomePage: React.FC = () => {
   const {
     auth: { auth$ },
+    analytics: { analytics$ },
   } = React.useContext(AppContext)
   const { isAuthenticated, isLoading, getAccessTokenSilently } = useAuth0()
+
+  React.useEffect(() => {
+    analytics$.next({
+      event: AnalyticsEventType.APP_PAGE_LOAD,
+      data: Path.WELCOME,
+    })
+  }, [analytics$])
 
   useEffect(() => {
     if (isLoading || !isAuthenticated) return

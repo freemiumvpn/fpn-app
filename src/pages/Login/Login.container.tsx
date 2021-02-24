@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom'
 
 import { AppContext } from '../../context/Context'
 import { getEnvVars } from '../../env'
+import { AnalyticsEventType } from '../../middlewares/analytics/Analytics'
 import AuthLogin from '../../modules/auth/AuthLogin'
 import { Path } from '../../routes/routes'
 import SplashPage from '../Splash/Splash'
@@ -14,7 +15,15 @@ const LoginPage: React.FC = () => {
   const { isAuthenticated, isLoading, getAccessTokenSilently } = useAuth0()
   const {
     auth: { auth$ },
+    analytics: { analytics$ },
   } = React.useContext(AppContext)
+
+  React.useEffect(() => {
+    analytics$.next({
+      event: AnalyticsEventType.APP_PAGE_LOAD,
+      data: Path.LOGIN,
+    })
+  }, [analytics$])
 
   React.useEffect(() => {
     if (isLoading || !isAuthenticated) return
