@@ -30,7 +30,7 @@ interface GaWindow {
 class Analytics {
   constructor() {
     this.push({ event: AnalyticsEventType.JS, data: new Date().toISOString() })
-    this.push({ event: AnalyticsEventType.CONFIG, data: 'G-NN4DKBQ40N' })
+    this.push({ event: AnalyticsEventType.CONFIG, data: 'GTM-TRG2WR9' })
   }
 
   push(event: AnalyticsEvent): void {
