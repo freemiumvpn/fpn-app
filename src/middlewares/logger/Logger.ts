@@ -59,6 +59,7 @@ class Logger {
  * logger is a singleton
  */
 const logger = new Logger()
+logger.enable = process.env.NODE_ENV !== 'production'
 
 if (typeof window !== 'undefined') {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

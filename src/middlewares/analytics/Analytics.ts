@@ -1,21 +1,22 @@
+/* eslint-disable @typescript-eslint/camelcase */
+import mixpanel from 'mixpanel-browser'
+
+import { getEnvVars } from '../../env'
 import { logger } from '../logger/Logger'
 
 enum AnalyticsEventType {
   /**
-   * Default events
-   */
-  JS = 'JS',
-  CONFIG = 'config',
-
-  /**
    * APP
    */
-  APP_PAGE_LOAD = 'tag_app_page_load',
+  APP_PAGE_LOAD = 'APP_PAGE_LOAD',
 
   /**
-   * VPN
+   * WELCOME PAGE
    */
-  VPN_DOWNLOAD_CONFIG = 'tag_vpn_download_config',
+  PAGE_WELCOME_CLICK_NEXT = 'PAGE_WELCOME_CLICK_NEXT',
+  PAGE_WELCOME_CLICK_BACK = 'PAGE_WELCOME_CLICK_BACK',
+  PAGE_WELCOME_CLICK_RESET = 'PAGE_WELCOME_CLICK_RESET',
+  PAGE_WELCOME_CLICK_DOWNLOAD = 'PAGE_WELCOME_CLICK_DOWNLOAD',
 }
 
 interface AnalyticsEvent {
@@ -23,23 +24,26 @@ interface AnalyticsEvent {
   data: string
 }
 
-interface GaWindow {
-  dataLayer: AnalyticsEvent[]
-}
+const {
+  analytics: {
+    mixpanel: { token, url },
+  },
+} = getEnvVars()
+
+const dataLayer = (window as any).dataLayer
 
 class Analytics {
   constructor() {
-    this.push({ event: AnalyticsEventType.JS, data: new Date().toISOString() })
-    this.push({ event: AnalyticsEventType.CONFIG, data: 'GTM-TRG2WR9' })
+    mixpanel.init(token, {
+      api_host: url,
+      batch_requests: true,
+    })
   }
 
   push(event: AnalyticsEvent): void {
-    const { dataLayer } = window as Window & typeof globalThis & GaWindow
-    if (!dataLayer) {
-      return logger.error('Data Layer does not exist')
-    }
-
+    mixpanel.track(event.event, { data: event.data })
     dataLayer.push(event)
+    logger.info('Analytics |', event.event, { data: event.data })
   }
 }
 
