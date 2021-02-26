@@ -44,6 +44,11 @@ enum EnvKey {
   AUTH0_SCOPE = 'AUTH0_SCOPE',
 
   /**
+   * Mixpanel
+   */
+  ANALYTICS_MIXPANEL_TOKEN = 'ANALYTICS_MIXPANEL_TOKEN',
+
+  /**
    * GQL
    */
   GQL_URL = 'GQL_URL',
@@ -64,6 +69,12 @@ interface Env {
     redirectUri: string
     audience: string
     scope: string
+  }
+  analytics: {
+    mixpanel: {
+      token: string
+      url: string
+    }
   }
   offerWall: {
     clientSecret: string
@@ -89,6 +100,12 @@ const createEnvVars = (env = parseEnv()): Env => {
       redirectUri: env.AUTH0_REDIRECT_URI || '',
       audience: env.AUTH0_AUDIENCE || '',
       scope: env.AUTH0_SCOPE || '',
+    },
+    analytics: {
+      mixpanel: {
+        url: 'https://api-eu.mixpanel.com',
+        token: env.ANALYTICS_MIXPANEL_TOKEN || '',
+      },
     },
     api: {
       retry: 3,

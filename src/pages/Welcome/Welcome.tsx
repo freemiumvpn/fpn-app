@@ -96,14 +96,26 @@ const WelcomePage: React.FC = () => {
 
   const handleNext = (): void => {
     setActiveStep(prevStep => prevStep + 1)
+    analytics$.next({
+      event: AnalyticsEventType.PAGE_WELCOME_CLICK_NEXT,
+      data: `current: ${activeStep}`,
+    })
   }
 
   const handleBack = (): void => {
     setActiveStep(prevStep => prevStep - 1)
+    analytics$.next({
+      event: AnalyticsEventType.PAGE_WELCOME_CLICK_BACK,
+      data: `current: ${activeStep}`,
+    })
   }
 
   const handleReset = (): void => {
     setActiveStep(0)
+    analytics$.next({
+      event: AnalyticsEventType.PAGE_WELCOME_CLICK_RESET,
+      data: `current: ${activeStep}`,
+    })
   }
 
   if (!isAuthenticated) {

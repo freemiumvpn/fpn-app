@@ -31,7 +31,7 @@ const WelcomeConnect: React.FC = () => {
 
   const handleClick = (): void => {
     analytics$.next({
-      event: AnalyticsEventType.VPN_DOWNLOAD_CONFIG,
+      event: AnalyticsEventType.PAGE_WELCOME_CLICK_DOWNLOAD,
       data: url,
     })
   }
