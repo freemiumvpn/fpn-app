@@ -19,6 +19,7 @@ import styles from './Welcome.scss'
 import { WelcomeStart } from './components/WelcomeStart/WelcomeStart'
 import { WelcomeInstall } from './components/WelcomeInstall/WelcomeInstall'
 import { WelcomeConnect } from './components/WelcomeConnect/WelcomeConnect'
+import { WelcomeFinish } from './components/WelcomeFinish/WelcomeFinish'
 
 const getSteps = (): string[] => {
   return ['Start', 'Install', 'Connect']
@@ -126,7 +127,9 @@ const WelcomePage: React.FC = () => {
     <div className={styles.main}>
       {getStepContent(activeStep)}
 
-      <div>
+      {activeStep === steps.length && <WelcomeFinish onClick={handleReset} />}
+
+      <div className={styles.content}>
         <Stepper
           classes={{
             root: styles.stepper,
@@ -143,32 +146,34 @@ const WelcomePage: React.FC = () => {
           ))}
         </Stepper>
 
-        <div className={styles.actions}>
-          {activeStep === steps.length ? (
+        {activeStep !== steps.length && (
+          <div className={styles.actions}>
+            <Button disabled={activeStep === 0} onClick={handleBack}>
+              Back
+            </Button>
             <Button
               variant="contained"
               color="primary"
-              onClick={handleReset}
+              onClick={handleNext}
               className={styles.button}
             >
-              Dashboard 🔥
+              {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
             </Button>
-          ) : (
-            <>
-              <Button disabled={activeStep === 0} onClick={handleBack}>
-                Back
-              </Button>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={handleNext}
-                className={styles.button}
-              >
-                {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-              </Button>
-            </>
-          )}
-        </div>
+          </div>
+        )}
+
+        <a
+          href="https://www.producthunt.com/posts/freemiumpn?utm_source=badge-review&utm_medium=badge&utm_souce=badge-freemiumpn#discussion-body"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.link}
+        >
+          <img
+            src="https://api.producthunt.com/widgets/embed-image/v1/review.svg?post_id=285882&theme=light"
+            alt="Freemiumpn - A Freemium VPN you will enjoy | Product Hunt"
+            className={styles.linkImage}
+          />
+        </a>
       </div>
     </div>
   )
