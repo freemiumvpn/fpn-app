@@ -9,11 +9,16 @@ import CloudDownloadIcon from '@material-ui/icons/CloudDownload'
 import PowerIcon from '@material-ui/icons/Power'
 import { useAuth0 } from '@auth0/auth0-react'
 import { Redirect } from 'react-router-dom'
+import { filter } from 'rxjs/operators'
 
 import { getEnvVars } from '../../env'
 import { AppContext } from '../../context/Context'
 import { Path } from '../../routes/routes'
 import { AnalyticsEventType } from '../../middlewares/analytics/Analytics'
+import { useUser } from '../../modules/user/hooks/useUser'
+import useObservable from '../../shared/hooks/useObservable'
+import { TOKEN_INIT } from '../../context/auth/createAuthContext'
+import SplashPage from '../Splash/Splash'
 
 import styles from './Welcome.scss'
 import { WelcomeStart } from './components/WelcomeStart/WelcomeStart'
@@ -72,8 +77,25 @@ const WelcomePage: React.FC = () => {
     auth: { auth$ },
     analytics: { analytics$ },
   } = React.useContext(AppContext)
-  const { isAuthenticated, isLoading, getAccessTokenSilently } = useAuth0()
+  const {
+    isAuthenticated,
+    isLoading,
+    getAccessTokenSilently,
+    user,
+  } = useAuth0()
 
+  const auth = useObservable(
+    auth$.pipe(
+      filter(a => a.token !== ''),
+      filter(a => a.token !== TOKEN_INIT)
+    ),
+    { token: '' }
+  )
+  const isValidToken = Boolean(auth.token) && auth.token !== TOKEN_INIT
+  const { user: userInfo, loading, error } = useUser(
+    user && user.sub,
+    !isValidToken
+  )
   React.useEffect(() => {
     analytics$.next({
       event: AnalyticsEventType.APP_PAGE_LOAD,
@@ -123,11 +145,32 @@ const WelcomePage: React.FC = () => {
     return <Redirect to={Path.LOGIN} />
   }
 
+  if (!userInfo || loading) {
+    return <SplashPage />
+  }
+
+  if (error) {
+    return <Redirect to={Path.HOME} />
+  }
+
   return (
     <div className={styles.main}>
       {getStepContent(activeStep)}
 
       {activeStep === steps.length && <WelcomeFinish onClick={handleReset} />}
+      {!userInfo.verified && (
+        <div className={styles.verify}>
+          <div>We are exited to have you! 💥 </div>
+          <div>
+            Please check your inbox and verify your email address to continue.
+          </div>
+          <div>Don&#39;t worry we will be waiting for you here!</div>
+          <img
+            className={styles.verifyImage}
+            src="https://media.giphy.com/media/26BRuo6sLetdllPAQ/giphy.gif"
+          />
+        </div>
+      )}
 
       <div className={styles.content}>
         <Stepper
@@ -146,7 +189,7 @@ const WelcomePage: React.FC = () => {
           ))}
         </Stepper>
 
-        {activeStep !== steps.length && (
+        {userInfo.verified && activeStep !== steps.length && (
           <div className={styles.actions}>
             <Button disabled={activeStep === 0} onClick={handleBack}>
               Back

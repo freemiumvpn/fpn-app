@@ -1,3 +1,9 @@
+# docs https://graphql-code-generator.com/docs/getting-started/schema-field#available-formats
+# schema:
+#   - http://localhost:3000/graphql:
+#       headers:
+#         Authorization: YOUR-TOKEN-HERE
+
 language: typescript
 schema: https://api.freemiumpn.com/graphql
 overwrite: true

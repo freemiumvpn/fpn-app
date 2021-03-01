@@ -8,6 +8,15 @@ declare module '*/pingSubscription.gql' {
 }
     
 
+declare module '*/user.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const user: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/vpnSignedUrl.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;

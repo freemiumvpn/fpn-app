@@ -26,6 +26,12 @@ export type Query = {
   __typename?: 'Query';
   ping: Ping;
   vpnSignedUrl: Scalars['String'];
+  user: User;
+};
+
+
+export type QueryUserArgs = {
+  userId: Scalars['String'];
 };
 
 export type Subscription = {
@@ -66,6 +72,12 @@ export enum VpnSessionStatus {
   Error = 'ERROR'
 }
 
+export type User = {
+  __typename?: 'User';
+  id: Scalars['String'];
+  verified: Scalars['Boolean'];
+};
+
 export enum CacheControlScope {
   Public = 'PUBLIC',
   Private = 'PRIVATE'
@@ -82,6 +94,19 @@ export type PingSubscription = (
   & { ping: (
     { __typename?: 'Ping' }
     & Pick<Ping, 'date' | 'message'>
+  ) }
+);
+
+export type UserQueryVariables = Exact<{
+  userId: Scalars['String'];
+}>;
+
+
+export type UserQuery = (
+  { __typename?: 'Query' }
+  & { user: (
+    { __typename?: 'User' }
+    & Pick<User, 'id' | 'verified'>
   ) }
 );
 
@@ -124,6 +149,40 @@ export function usePingSubscription(baseOptions: Apollo.SubscriptionHookOptions<
       }
 export type PingSubscriptionHookResult = ReturnType<typeof usePingSubscription>;
 export type PingSubscriptionResult = Apollo.SubscriptionResult<PingSubscription>;
+export const UserDocument = gql`
+    query user($userId: String!) {
+  user(userId: $userId) {
+    id
+    verified
+  }
+}
+    `;
+
+/**
+ * __useUserQuery__
+ *
+ * To run a query within a React component, call `useUserQuery` and pass it any options that fit your needs.
+ * When your component renders, `useUserQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useUserQuery({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *   },
+ * });
+ */
+export function useUserQuery(baseOptions: Apollo.QueryHookOptions<UserQuery, UserQueryVariables>) {
+        return Apollo.useQuery<UserQuery, UserQueryVariables>(UserDocument, baseOptions);
+      }
+export function useUserLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<UserQuery, UserQueryVariables>) {
+          return Apollo.useLazyQuery<UserQuery, UserQueryVariables>(UserDocument, baseOptions);
+        }
+export type UserQueryHookResult = ReturnType<typeof useUserQuery>;
+export type UserLazyQueryHookResult = ReturnType<typeof useUserLazyQuery>;
+export type UserQueryResult = Apollo.QueryResult<UserQuery, UserQueryVariables>;
 export const VpnSignedUrlDocument = gql`
     query vpnSignedUrl {
   vpnSignedUrl
