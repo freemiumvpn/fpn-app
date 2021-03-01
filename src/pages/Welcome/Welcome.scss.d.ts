@@ -9,3 +9,5 @@ export const actions: string;
 export const button: string;
 export const link: string;
 export const linkImage: string;
+export const verify: string;
+export const verifyImage: string;

@@ -58,3 +58,18 @@
     width: 211px;
     height: 45px;
 }
+
+.verify {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    text-align: center;
+
+    &Image {
+        width: 200px;
+        height: 130px;
+        margin: 10px;
+    }
+}

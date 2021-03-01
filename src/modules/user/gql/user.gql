@@ -1,0 +1,6 @@
+query user($userId: String!) {
+  user(userId: $userId) {
+    id
+    verified
+  }
+}
