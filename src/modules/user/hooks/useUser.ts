@@ -9,7 +9,6 @@ interface UseUser {
 }
 
 const useUser = (userId: string, skip: boolean): UseUser => {
-  console.log(skip || !userId, skip, userId)
   const { data, loading, error } = useUserQuery({
     variables: {
       userId,

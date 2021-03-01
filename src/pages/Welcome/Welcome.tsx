@@ -9,7 +9,7 @@ import CloudDownloadIcon from '@material-ui/icons/CloudDownload'
 import PowerIcon from '@material-ui/icons/Power'
 import { useAuth0 } from '@auth0/auth0-react'
 import { Redirect } from 'react-router-dom'
-import { delay, filter } from 'rxjs/operators'
+import { filter } from 'rxjs/operators'
 
 import { getEnvVars } from '../../env'
 import { AppContext } from '../../context/Context'
