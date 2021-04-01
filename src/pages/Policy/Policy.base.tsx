@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import HomeHeader from '../Home/components/Header/Header'
+import HomeHeader from '../Home/components/Header'
 import HomeFooter from '../Home/components/Footer/Footer'
 
 import styles from './Policy.scss'

@@ -5,7 +5,7 @@ import { Path } from '../../routes/routes'
 import ButtonLink from '../../modules/input/ButtonLink/ButtonLink'
 import Logo from '../../modules/brand/Logo/Logo'
 
-import HomeHeader from './components/Header/Header'
+import HomeHeader from './components/Header'
 import HomeFooter from './components/Footer/Footer'
 import HomePricing from './components/HomePricing'
 import styles from './Home.scss'
