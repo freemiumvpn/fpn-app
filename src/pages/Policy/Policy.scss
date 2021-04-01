@@ -1,0 +1,32 @@
+@import "../../shared/styles/breakpoints.scss";
+@import "../../shared/styles/palette.scss";
+
+.main {
+    background-color: var(--background);
+}
+
+.content {
+    padding: 0 32px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.headerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-grow: 1;
+
+    margin: auto;
+    max-width: $breakpoint-desktop;
+    font-size: 14px;
+    height: 66px;
+    padding: 0 40px;
+}
+
+.body {
+    margin-top: 66px;
+    text-align: center;
+}
+
