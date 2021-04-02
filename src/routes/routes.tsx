@@ -8,10 +8,12 @@ import UserPage from '../pages/User/User'
 import SurveyPage from '../pages/Survey/Survey'
 import PolicyPage from '../pages/Policy'
 import MarketingPage from '../pages/Marketing'
+import LogoutPage from '../pages/Logout'
 
 enum Path {
   HOME = '/',
   LOGIN = '/login',
+  LOGOUT = '/logout',
   SIGN_UP = '/signup',
   SURVEY = '/survey',
 
@@ -36,11 +38,15 @@ const Routes: React.FC = () => {
     <Switch>
       <Route component={LoginPage} path={Path.LOGIN} />
       <Route component={LoginPage} path={Path.SIGN_UP} />
+      <Route component={LogoutPage} path={Path.LOGOUT} />
+
       <Route component={UserPage} path={Path.USER} />
       <Route component={WelcomePage} path={Path.WELCOME} />
       <Route component={SurveyPage} path={Path.SURVEY} />
+
       <Route component={PolicyPage} path={Path.POLICY} />
       <Route component={MarketingPage} path={Path.MARKETING} />
+
       <Route component={HomePage} />
     </Switch>
   )

@@ -6,6 +6,7 @@ import HomeHeader from '../Home/components/Header'
 import ButtonLink from '../../modules/input/ButtonLink/ButtonLink'
 import { Path } from '../../routes/routes'
 import { MvpFeatures } from '../Welcome/components/MvpFeatures/MvpFeatures'
+import ProductHunt from '../../shared/components/ProductHunt'
 
 import styles from './Marketing.scss'
 
@@ -21,6 +22,9 @@ const MarketingBasePage: React.FC = () => {
         <p className={styles.body}>
           Our goal is to provide a fast, transparent and secure service.
         </p>
+        <div className={styles.introductionCta}>
+          <ProductHunt />
+        </div>
         <div className={styles.features}>
           <MvpFeatures />
           <div className={styles.imgWrapper}>

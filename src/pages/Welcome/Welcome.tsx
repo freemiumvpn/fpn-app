@@ -19,6 +19,7 @@ import { useUser } from '../../modules/user/hooks/useUser'
 import useObservable from '../../shared/hooks/useObservable'
 import { TOKEN_INIT } from '../../context/auth/createAuthContext'
 import SplashPage from '../Splash/Splash'
+import ProductHunt from '../../shared/components/ProductHunt'
 
 import styles from './Welcome.scss'
 import { WelcomeStart } from './components/WelcomeStart/WelcomeStart'
@@ -204,19 +205,7 @@ const WelcomePage: React.FC = () => {
             </Button>
           </div>
         )}
-
-        <a
-          href="https://www.producthunt.com/posts/freemiumpn?utm_source=badge-review&utm_medium=badge&utm_souce=badge-freemiumpn#discussion-body"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.link}
-        >
-          <img
-            src="https://api.producthunt.com/widgets/embed-image/v1/review.svg?post_id=285882&theme=light"
-            alt="Freemiumpn - A Freemium VPN you will enjoy | Product Hunt"
-            className={styles.linkImage}
-          />
-        </a>
+        <ProductHunt />
       </div>
     </div>
   )
