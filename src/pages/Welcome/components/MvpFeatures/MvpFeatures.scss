@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.list {
+    margin: 20px 0;
+    padding: 10px;
+    list-style: none;
+    background-color: white;
+    border-radius: 20px;
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+
+    &Item {
+        margin: 10px 0;
+    }
+
+    &Avatar {
+        min-width: 25px !important;
+    }
+}

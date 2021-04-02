@@ -7,6 +7,7 @@ import WelcomePage from '../pages/Welcome/Welcome'
 import UserPage from '../pages/User/User'
 import SurveyPage from '../pages/Survey/Survey'
 import PolicyPage from '../pages/Policy'
+import MarketingPage from '../pages/Marketing'
 
 enum Path {
   HOME = '/',
@@ -22,6 +23,7 @@ enum Path {
   USER_DASHBOARD_VPN = '/user/vpn',
 
   POLICY = '/policy',
+  MARKETING = '/marketing',
 
   // TODO
   ABOUT = '/about',
@@ -38,6 +40,7 @@ const Routes: React.FC = () => {
       <Route component={WelcomePage} path={Path.WELCOME} />
       <Route component={SurveyPage} path={Path.SURVEY} />
       <Route component={PolicyPage} path={Path.POLICY} />
+      <Route component={MarketingPage} path={Path.MARKETING} />
       <Route component={HomePage} />
     </Switch>
   )
