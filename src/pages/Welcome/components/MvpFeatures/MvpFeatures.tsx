@@ -19,7 +19,7 @@ const Row: React.FC<RowProps> = ({ icon, text }) => {
 const MvpFeatures: React.FC = () => {
   return (
     <ul className={styles.list}>
-      <Row icon="🔥" text="No Data Limits | First 500 users only!" />
+      <Row icon="🔥" text="No Data Limits!" />
       <Row icon="⬇️" text="Download rate of 3Mbs/s" />
       <Row icon="⬆️" text="Upload rate of 1Mb/s" />
       <Row icon="🇨🇭" text="A distributed VPN Server" />

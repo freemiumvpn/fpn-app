@@ -42,7 +42,7 @@ const MarketingBasePage: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Join the Beta Test 🚀
+            Take me there! 🚀
           </a>
         </Button>
       </div>
