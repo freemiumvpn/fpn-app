@@ -1,0 +1,112 @@
+@import "../../shared/styles/breakpoints.scss";
+@import "../../shared/styles/palette.scss";
+
+.main {
+    background-color: var(--background);
+}
+
+.content {
+    padding: 0 32px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.headerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-grow: 1;
+
+    margin: auto;
+    max-width: $breakpoint-desktop;
+    font-size: 14px;
+    height: 66px;
+    padding: 0 40px;
+}
+
+.introduction {
+    padding: 60px 20px 0px;
+    max-width: 500px;
+    position: relative;
+    margin: auto;
+}
+
+.imgWrapper {
+    position: initial;
+    text-align: center;
+    padding: 20px;
+}
+
+.img {
+    height: 400px;
+}
+
+.title {
+    font-size: 48px;
+    line-height: 56px;
+    color: #0a2540;
+    text-align: left;
+}
+
+.body {
+    font-size: 27px;
+    font-weight: 300;
+    color: rgb(66, 84, 102);
+}
+
+.button {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+
+    &:after {
+        animation: shine 5s ease-in-out infinite;
+        animation-fill-mode: forwards;
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -200%;
+        width: 200%;
+        height: 200%;
+        opacity: 0;
+        transform: rotate(30deg);
+        background: linear-gradient(to right, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0.13) 75%, rgba(255, 255, 255, 0.5) 113%, rgba(255, 255, 255, 0) 62%)
+    }
+}
+
+.features {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+}
+
+.actions {
+    padding: 20px;
+    text-align: center;
+}
+
+@media (min-width: $breakpoint-tablet) {
+    .title {
+        font-size: 58px;
+        text-align: center;
+    }
+    .body {
+        font-size: 33px;
+        text-align: center;
+    }
+    .features {
+        flex-direction: row;
+    }
+    
+}
+
+@media (min-width: $breakpoint-desktop) {
+    .introduction {
+        max-width: 700px;
+    }
+    .img {
+        height: 700px;
+    }
+}

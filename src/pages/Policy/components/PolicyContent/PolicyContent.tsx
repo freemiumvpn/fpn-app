@@ -7,7 +7,7 @@ const PolicyContent: React.FC = () => {
     <div className={styles.main}>
       <p className={styles.metadata}>Last updated: March 29, 2021</p>
       <section>
-        Freemiumpn is a zero-log service provider and do not keep records of
+        Freemiumpn is a zero-log service provider and does not keep records of
         your traffic, browsing or activity while using our services. Freemiumpn
         analyses website and app functionality for performance purposes.
       </section>
@@ -63,10 +63,11 @@ const PolicyContent: React.FC = () => {
       <section>
         <p>
           To review, request a copy of, or delete your account information you
-          may contact us by
+          may contact us by{' '}
           <a href="https://freemiumpn.com/contact">
-            visiting our page on our website
+            visiting our contact page on our website
           </a>
+          .
         </p>
       </section>
 
