@@ -10,3 +10,4 @@ export const button: string;
 export const shine: string;
 export const features: string;
 export const actions: string;
+export const introductionCta: string;
