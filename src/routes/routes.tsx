@@ -25,7 +25,9 @@ enum Path {
   USER_DASHBOARD_VPN = '/user/vpn',
 
   POLICY = '/policy',
+
   MARKETING = '/marketing',
+  MARKETING_IOS_BETA = '/ios-beta',
 
   // TODO
   ABOUT = '/about',
@@ -46,6 +48,7 @@ const Routes: React.FC = () => {
 
       <Route component={PolicyPage} path={Path.POLICY} />
       <Route component={MarketingPage} path={Path.MARKETING} />
+      <Route component={MarketingPage} path={Path.MARKETING_IOS_BETA} />
 
       <Route component={HomePage} />
     </Switch>
