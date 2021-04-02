@@ -22,9 +22,8 @@ const HomePageBase: React.FC = () => {
           <p className={styles.text}>
             FPN is a fast, secure and simple freemium VPN you will enjoy
           </p>
-          <ButtonLink className={styles.button} to={Path.SIGN_UP}>
-            {' '}
-            Sign up for free 🚀
+          <ButtonLink className={styles.button} to={Path.MARKETING_IOS_BETA}>
+            Join the iOS Beta Test 🚀
           </ButtonLink>
         </div>
       </div>
