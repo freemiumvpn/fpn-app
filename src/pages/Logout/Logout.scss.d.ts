@@ -4,3 +4,4 @@ export const header: string;
 export const logo: string;
 export const title: string;
 export const body: string;
+export const text: string;

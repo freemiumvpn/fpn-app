@@ -13,12 +13,8 @@
 .box {
     display: flex;
     flex-direction: column;
-    height: auto;
-    white-space: normal;
     width: 400px;
-    background-color: $color-turquoise-blue;
     font-size: 14px;
-    border-radius: 5px;
     width: 400px;
     margin: auto;
     padding: 40px;
@@ -28,10 +24,9 @@
     text-align: center;
 }
 
-.img {
-    max-height: 50px;
-    max-width: 100%;
-    vertical-align: top;
+.logo {
+    max-height: 300px;
+    max-width: 300px;
 }
 
 .title {

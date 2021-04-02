@@ -12,10 +12,11 @@ const LogoutBasePage: React.FC = () => {
       <section className={styles.box}>
         <header className={styles.header}>
           <Logo className={styles.logo} />
-          <h1 className={styles.title}>See you soon! 👋</h1>
+          <h1 className={styles.title}>See you soon 👋</h1>
         </header>
 
         <div className={styles.body}>
+          <div className={styles.text}>And have a lovely day!</div>
           <Button>
             <AuthLogout />
           </Button>
