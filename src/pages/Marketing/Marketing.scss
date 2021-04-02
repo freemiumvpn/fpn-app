@@ -59,7 +59,11 @@
     position: relative;
     overflow: hidden;
     display: inline-block;
+    max-width: 400px;
 
+    a {
+        color: white;
+    }
     &:after {
         animation: shine 5s ease-in-out infinite;
         animation-fill-mode: forwards;

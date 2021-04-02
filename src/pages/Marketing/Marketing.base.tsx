@@ -3,10 +3,9 @@ import classnames from 'classnames'
 
 import HomeFooter from '../Home/components/Footer/Footer'
 import HomeHeader from '../Home/components/Header'
-import ButtonLink from '../../modules/input/ButtonLink/ButtonLink'
-import { Path } from '../../routes/routes'
 import { MvpFeatures } from '../Welcome/components/MvpFeatures/MvpFeatures'
 import ProductHunt from '../../shared/components/ProductHunt'
+import Button from '../../modules/input/Button/Button'
 
 import styles from './Marketing.scss'
 
@@ -37,10 +36,15 @@ const MarketingBasePage: React.FC = () => {
       </section>
 
       <div className={styles.actions}>
-        <ButtonLink className={styles.button} to={Path.SIGN_UP}>
-          {' '}
-          Sign up for free 🚀
-        </ButtonLink>
+        <Button className={styles.button}>
+          <a
+            href="https://testflight.apple.com/join/Tuqm3ka1"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Join the Beta Test 🚀
+          </a>
+        </Button>
       </div>
 
       <HomeFooter
