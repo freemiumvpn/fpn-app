@@ -1,6 +1,8 @@
-/* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { Subject } from 'rxjs/internal/Subject'
+
+import sentry from './sentry'
 
 enum LogLevel {
   INFO = 'INFO',
@@ -11,47 +13,58 @@ enum LogLevel {
 
 interface Log {
   type: LogLevel
-  message: unknown[]
+  message?: string
+  context?: sentry.Scope
+  breadcrumb?: sentry.Breadcrumb
+  event?: sentry.Event
+  exception?: any
 }
 
 class Logger {
   public enable = false
   private logger$ = new Subject<Log>()
 
-  public info = (...args: unknown[]): void => {
+  constructor(private handler = console, private reporter = sentry) {}
+
+  public info = (message: string, context?: sentry.Scope): void => {
     this.logger$.next({
       type: LogLevel.INFO,
-      message: args,
+      message,
+      context,
     })
 
-    if (this.enable) console.log(...args)
+    this.reporter.captureMessage(message, context)
+    if (this.enable) this.handler.log('INFO | ', message, context)
   }
 
-  public trace = (...args: unknown[]): void => {
+  public trace = (breadcrumb: sentry.Breadcrumb): void => {
     this.logger$.next({
       type: LogLevel.TRACE,
-      message: args,
+      breadcrumb,
     })
 
-    if (this.enable) console.log(...args)
+    if (this.enable) this.handler.debug('TRACE | ', breadcrumb)
   }
 
-  public warn = (...args: unknown[]): void => {
+  public warn = (event: sentry.Event): void => {
     this.logger$.next({
       type: LogLevel.WARN,
-      message: args,
+      event,
     })
+    this.reporter.captureEvent(event)
 
-    if (this.enable) console.log(...args)
+    if (this.enable) this.handler.warn('WARN | ', event)
   }
 
-  public error = (...args: unknown[]): void => {
+  public error = (exception: any, context?: sentry.Scope): void => {
     this.logger$.next({
       type: LogLevel.ERROR,
-      message: args,
+      exception,
+      context,
     })
+    this.reporter.captureException(exception, context)
 
-    if (this.enable) console.log(...args)
+    if (this.enable) this.handler.error('ERROR | ', exception, context)
   }
 }
 
@@ -62,7 +75,6 @@ const logger = new Logger()
 logger.enable = process.env.NODE_ENV !== 'production'
 
 if (typeof window !== 'undefined') {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ;(window as any)._logger = logger
 }
 
