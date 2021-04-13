@@ -20,7 +20,8 @@ const parseEnv = (
     try {
       injectedEnv = JSON.parse(window.atob(env))
     } catch (error) {
-      logger.error({ info: 'Failed to parse env vars', error })
+      // eslint-disable-next-line no-console
+      console.error({ info: 'Failed to parse env vars', error })
     }
   }
 
