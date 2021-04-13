@@ -43,7 +43,9 @@ class Analytics {
   push(event: AnalyticsEvent): void {
     mixpanel.track(event.event, { data: event.data })
     dataLayer.push(event)
-    logger.info('Analytics |', event.event, { data: event.data })
+    logger.trace({
+      data: event,
+    })
   }
 }
 

@@ -36,7 +36,11 @@ const WelcomeInstall: React.FC = () => {
   }[operatingSystem]
 
   const handleClick = (): void => {
-    logger.trace('operatingSystem', operatingSystem)
+    logger.trace({
+      data: {
+        operatingSystem,
+      },
+    })
   }
 
   return (
