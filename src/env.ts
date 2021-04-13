@@ -1,6 +1,5 @@
 import * as Sentry from '@sentry/browser'
 
-import { logger } from './middlewares/logger/Logger'
 import memoise from './shared/utils/memoise'
 
 /***
