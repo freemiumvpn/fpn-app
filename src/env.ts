@@ -1,4 +1,5 @@
-import { logger } from './middlewares/logger/Logger'
+import * as Sentry from '@sentry/browser'
+
 import memoise from './shared/utils/memoise'
 
 /***
@@ -18,7 +19,8 @@ const parseEnv = (
     try {
       injectedEnv = JSON.parse(window.atob(env))
     } catch (error) {
-      logger.error('Failed to parse env vars', { env }, error)
+      // eslint-disable-next-line no-console
+      console.error({ info: 'Failed to parse env vars', error })
     }
   }
 
@@ -55,6 +57,11 @@ enum EnvKey {
   GQL_WEB_SOCKET_URL = 'GQL_WEB_SOCKET_URL',
 
   /**
+   * SENTRY
+   */
+  SENTRY_DSN = 'SENTRY_DSN',
+
+  /**
    * OFFER WALL
    */
   OFFER_WALL_CLIENT_SECRET = 'OFFER_WALL_CLIENT_SECRET',
@@ -89,6 +96,7 @@ interface Env {
     url: string
     webSocketUrl: string
   }
+  sentry: Sentry.BrowserOptions
 }
 
 const createEnvVars = (env = parseEnv()): Env => {
@@ -115,6 +123,10 @@ const createEnvVars = (env = parseEnv()): Env => {
     gql: {
       url: env.GQL_URL || '',
       webSocketUrl: env.GQL_WEB_SOCKET_URL || '',
+    },
+    sentry: {
+      dsn: env.SENTRY_DSN || '',
+      sampleRate: 1.0,
     },
     offerWall: {
       clientSecret: env.OFFER_WALL_CLIENT_SECRET || '',
