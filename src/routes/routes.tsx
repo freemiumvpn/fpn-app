@@ -9,6 +9,7 @@ import SurveyPage from '../pages/Survey/Survey'
 import PolicyPage from '../pages/Policy'
 import MarketingPage from '../pages/Marketing'
 import LogoutPage from '../pages/Logout'
+import SupportPage from '../pages/Support'
 
 enum Path {
   HOME = '/',
@@ -29,10 +30,12 @@ enum Path {
   MARKETING = '/marketing',
   MARKETING_IOS_BETA = '/ios-beta',
 
+  WELCOME = '/welcome',
+  SUPPORT = '/support',
+
   // TODO
   ABOUT = '/about',
   PRICING = '/pricing',
-  WELCOME = '/welcome',
 }
 
 const Routes: React.FC = () => {
@@ -46,6 +49,7 @@ const Routes: React.FC = () => {
       <Route component={WelcomePage} path={Path.WELCOME} />
       <Route component={SurveyPage} path={Path.SURVEY} />
 
+      <Route component={SupportPage} path={Path.SUPPORT} />
       <Route component={PolicyPage} path={Path.POLICY} />
       <Route component={MarketingPage} path={Path.MARKETING} />
       <Route component={MarketingPage} path={Path.MARKETING_IOS_BETA} />
