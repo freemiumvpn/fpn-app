@@ -2,7 +2,20 @@
 
 .footer {
     border-top: 1px solid #292830;
-    margin: 0 8px;
+    margin: 0 8px 8px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    flex-grow: 1;
+    margin: auto;
+    max-width: 1200px;
+    font-size: 14px;
+    height: 66px;
+    padding: 0 40px;
 }
 
 .link {

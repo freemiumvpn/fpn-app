@@ -1,5 +1,4 @@
 import React from 'react'
-import classnames from 'classnames'
 
 import HomeHeader from '../Home/components/Header'
 import HomeFooter from '../Home/components/Footer/Footer'
@@ -16,11 +15,7 @@ const PolicyBase: React.FC = () => {
         <PolicyContent />
       </div>
 
-      <HomeFooter
-        classes={{
-          container: classnames(styles.headerContainer, styles.content),
-        }}
-      />
+      <HomeFooter />
     </div>
   )
 }
