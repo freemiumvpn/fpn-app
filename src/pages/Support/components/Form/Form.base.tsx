@@ -42,7 +42,7 @@ const SupportForm: React.FC = () => {
     values: FormValues,
     { setSubmitting }: { setSubmitting: (s: boolean) => void }
   ): void => {
-    logger.info(JSON.stringify(values))
+    logger.info(JSON.stringify({ type: 'Support Page Form', ...values }))
     setSubmitting(false)
     setSubmitted(true)
   }
