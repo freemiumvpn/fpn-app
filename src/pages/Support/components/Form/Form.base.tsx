@@ -42,7 +42,15 @@ const SupportForm: React.FC = () => {
     values: FormValues,
     { setSubmitting }: { setSubmitting: (s: boolean) => void }
   ): void => {
-    logger.info(JSON.stringify({ type: 'Support Page Form', ...values }))
+    /**
+     * Leverage Sentry to automate
+     * Contact Enquiries
+     */
+    logger.warn({
+      message: 'Support Page Form',
+      user: { email: values.email },
+      extra: { message: values.content },
+    })
     setSubmitting(false)
     setSubmitted(true)
   }

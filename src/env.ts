@@ -69,6 +69,10 @@ enum EnvKey {
 }
 
 interface Env {
+  app: {
+    nodeEnv: string
+    gitSha: string
+  }
   auth0: {
     domain: string
     clientId: string
@@ -101,6 +105,10 @@ interface Env {
 
 const createEnvVars = (env = parseEnv()): Env => {
   return {
+    app: {
+      nodeEnv: process.env.NODE_ENV || '',
+      gitSha: process.env.GIT_SHA || '',
+    },
     auth0: {
       domain: env.AUTH0_DOMAIN || '',
       clientId: env.AUTH0_CLIENT_ID || '',

@@ -1,5 +1,4 @@
 import React from 'react'
-import classnames from 'classnames'
 
 import HomeFooter from '../Home/components/Footer/Footer'
 import HomeHeader from '../Home/components/Header'
@@ -47,11 +46,7 @@ const MarketingBasePage: React.FC = () => {
         </Button>
       </div>
 
-      <HomeFooter
-        classes={{
-          container: classnames(styles.headerContainer, styles.content),
-        }}
-      />
+      <HomeFooter />
     </div>
   )
 }

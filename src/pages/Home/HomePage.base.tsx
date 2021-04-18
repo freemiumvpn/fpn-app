@@ -30,11 +30,7 @@ const HomePageBase: React.FC = () => {
 
       <HomePricing classes={{ container: styles.content }} />
 
-      <HomeFooter
-        classes={{
-          container: classnames(styles.headerContainer, styles.content),
-        }}
-      />
+      <HomeFooter />
     </div>
   )
 }

@@ -1,5 +1,4 @@
 import React from 'react'
-import classnames from 'classnames'
 
 import HomeFooter from '../Home/components/Footer/Footer'
 import HomeHeader from '../Home/components/Header'
@@ -26,11 +25,7 @@ const SupportBasePage: React.FC = () => {
         </div>
       </div>
 
-      <HomeFooter
-        classes={{
-          container: classnames(styles.headerContainer, styles.section),
-        }}
-      />
+      <HomeFooter />
     </div>
   )
 }
