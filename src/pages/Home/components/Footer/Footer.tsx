@@ -12,7 +12,7 @@ const HomeFooter: React.FC = () => {
         <Link className={styles.link} to={Path.HOME}>
           FPN - Designed in London.
         </Link>
-        <Link className={styles.link} to={Path.POLICY}>
+        <Link className={styles.link} to={Path.PRIVACY_POLICY}>
           Policy
         </Link>
         <Link className={styles.link} to={Path.MARKETING}>
