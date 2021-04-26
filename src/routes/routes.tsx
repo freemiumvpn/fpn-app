@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Redirect, Route, Switch } from 'react-router-dom'
 
 import HomePage from '../pages/Home'
 import LoginPage from '../pages/Login'
@@ -26,6 +26,7 @@ enum Path {
   USER_DASHBOARD_VPN = '/user/vpn',
 
   POLICY = '/policy',
+  PRIVACY_POLICY = '/privacy-policy',
 
   MARKETING = '/marketing',
   MARKETING_IOS_BETA = '/ios-beta',
@@ -50,7 +51,10 @@ const Routes: React.FC = () => {
       <Route component={SurveyPage} path={Path.SURVEY} />
 
       <Route component={SupportPage} path={Path.SUPPORT} />
-      <Route component={PolicyPage} path={Path.POLICY} />
+
+      <Redirect from={Path.POLICY} to={Path.PRIVACY_POLICY} />
+      <Route component={PolicyPage} path={Path.PRIVACY_POLICY} />
+
       <Route component={MarketingPage} path={Path.MARKETING} />
       <Route component={MarketingPage} path={Path.MARKETING_IOS_BETA} />
 

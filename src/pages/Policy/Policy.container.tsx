@@ -14,7 +14,7 @@ const PolicyPage: React.FC = () => {
   React.useEffect(() => {
     analytics$.next({
       event: AnalyticsEventType.APP_PAGE_LOAD,
-      data: Path.POLICY,
+      data: Path.PRIVACY_POLICY,
     })
   }, [analytics$])
 
