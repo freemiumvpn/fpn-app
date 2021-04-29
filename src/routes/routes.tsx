@@ -28,6 +28,7 @@ enum Path {
 
   POLICY = '/policy',
   PRIVACY_POLICY = '/privacy-policy',
+  TERMS = '/terms',
   TERMS_AND_CONDITIONS = '/terms-and-conditions',
 
   MARKETING = '/marketing',
@@ -57,6 +58,7 @@ const Routes: React.FC = () => {
       <Redirect from={Path.POLICY} to={Path.PRIVACY_POLICY} />
       <Route component={PolicyPage} path={Path.PRIVACY_POLICY} />
 
+      <Redirect from={Path.TERMS} to={Path.TERMS_AND_CONDITIONS} />
       <Route component={TermsPage} path={Path.TERMS_AND_CONDITIONS} />
 
       <Route component={MarketingPage} path={Path.MARKETING} />
