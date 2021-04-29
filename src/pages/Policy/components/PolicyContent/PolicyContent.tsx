@@ -6,7 +6,7 @@ const PolicyContent: React.FC = () => {
   return (
     <div className={styles.main}>
       <h1>Privacy Policy</h1>
-      <p className={styles.metadata}>Last updated: April 26, 2021</p>
+      <p className={styles.metadata}>Last updated: April 29, 2021</p>
       <h3>Overview</h3>
       <section>
         <ul>
@@ -282,9 +282,9 @@ const PolicyContent: React.FC = () => {
       <section>
         <ul>
           <li>
-            Freemiumpn is not intended for children under the age of 17, we do
+            Freemiumpn is not intended for children under the age of 18, we do
             not knowingly or intentionally collect information about children
-            who are under 17 years of age. if you are under the age of 17 you
+            who are under 18 years of age. if you are under the age of 18 you
             may not use Freemiumpn in any way.
           </li>
         </ul>

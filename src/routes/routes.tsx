@@ -10,6 +10,7 @@ import PolicyPage from '../pages/Policy'
 import MarketingPage from '../pages/Marketing'
 import LogoutPage from '../pages/Logout'
 import SupportPage from '../pages/Support'
+import TermsPage from '../pages/Terms'
 
 enum Path {
   HOME = '/',
@@ -27,6 +28,7 @@ enum Path {
 
   POLICY = '/policy',
   PRIVACY_POLICY = '/privacy-policy',
+  TERMS_AND_CONDITIONS = '/terms-and-conditions',
 
   MARKETING = '/marketing',
   MARKETING_IOS_BETA = '/ios-beta',
@@ -54,6 +56,8 @@ const Routes: React.FC = () => {
 
       <Redirect from={Path.POLICY} to={Path.PRIVACY_POLICY} />
       <Route component={PolicyPage} path={Path.PRIVACY_POLICY} />
+
+      <Route component={TermsPage} path={Path.TERMS_AND_CONDITIONS} />
 
       <Route component={MarketingPage} path={Path.MARKETING} />
       <Route component={MarketingPage} path={Path.MARKETING_IOS_BETA} />
