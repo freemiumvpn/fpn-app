@@ -7,7 +7,7 @@ const TermsContent: React.FC = () => {
     <div className={styles.main}>
       <h1>Terms & Conditions</h1>
       <p className={styles.metadata}>
-        Last updated: April 28, 2021, Effective: April 28, 2021
+        Last updated: April 29, 2021, Effective: April 29, 2021
       </p>
       <section>
         The following Licence and Terms and Conditions Agreement (hereinafter
@@ -129,6 +129,28 @@ const TermsContent: React.FC = () => {
           <li>
             6.1 Termination by You. You may terminate this agreement at anytime
             by discontinuing use of all parts of the Service.
+          </li>
+          <li>
+            6.2 Indemnification. You agree to indemnify Freemiumpn for any
+            claims, losses, damages, liabilities, including legals fees and
+            expenses, arising out of your misuse of the Freemiumpn Service.
+            Freemiumpn will notify you of any such claim, action or proceeding
+            upon becoming aware of it. Freemiumpn reserves the right, at your
+            expense, to assume exclusive defense and control of any matter for
+            which you are required to indemnify Freemiumpn. You agree to
+            cooperate with Freemiumpn&apos;s defense of these claims.
+          </li>
+          <li>
+            7. Disclaimers and Warranties. No information wether written or oral
+            obtained by You from Freemiumpn will create any warranty.
+          </li>
+          <li>
+            7.1. Freemiumpn software, services and applications are made
+            available to You &quot;As is&quot;, and &quot;As available&quot; and
+            &quot;With all Faults&quot;. You agree that the use of Freemiumpn is
+            at your sole risk. Freemiumpn provides no assurances that it will
+            withstand attempts to avoid security mechanisms or that there will
+            be no bugs or &quot;cracks&quot;.
           </li>
         </ul>
       </section>
