@@ -7,7 +7,7 @@ const TermsContent: React.FC = () => {
     <div className={styles.main}>
       <h1>Terms & Conditions</h1>
       <p className={styles.metadata}>
-        Last updated: April 29, 2021, Effective: April 29, 2021
+        Last updated: May 2, 2021, Effective: May 2, 2021
       </p>
       <section>
         The following Licence and Terms and Conditions Agreement (hereinafter
@@ -151,6 +151,16 @@ const TermsContent: React.FC = () => {
             at your sole risk. Freemiumpn provides no assurances that it will
             withstand attempts to avoid security mechanisms or that there will
             be no bugs or &quot;cracks&quot;.
+          </li>
+          <li>
+            8. Limitation of liability. Under no circumstances, included but not
+            limited to negligence, will Freemiumpn or their entities be liable
+            for any special, indirect, incidental, consequential, punitive,
+            reliance, or exemplary damages (including without limitations
+            damages from any court action or legal dispute, lost business,
+            revenue, profits or any other pecuniary loss) arising or relating to
+            this agreement or as a result of your use or inability to use
+            Freemiumpn services.
           </li>
         </ul>
       </section>
