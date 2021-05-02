@@ -11,6 +11,7 @@ import MarketingPage from '../pages/Marketing'
 import LogoutPage from '../pages/Logout'
 import SupportPage from '../pages/Support'
 import TermsPage from '../pages/Terms'
+import FAQPage from '../pages/FAQ'
 
 enum Path {
   HOME = '/',
@@ -36,6 +37,7 @@ enum Path {
 
   WELCOME = '/welcome',
   SUPPORT = '/support',
+  FAQ = '/FAQ',
 
   // TODO
   ABOUT = '/about',
@@ -54,6 +56,7 @@ const Routes: React.FC = () => {
       <Route component={SurveyPage} path={Path.SURVEY} />
 
       <Route component={SupportPage} path={Path.SUPPORT} />
+      <Route component={FAQPage} path={Path.FAQ} />
 
       <Redirect from={Path.POLICY} to={Path.PRIVACY_POLICY} />
       <Route component={PolicyPage} path={Path.PRIVACY_POLICY} />
