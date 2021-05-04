@@ -22,7 +22,7 @@ const QuestionDisplay: React.FC<{ question: Question }> = ({ question }) => {
       </div>
 
       <div
-        className={classnames({
+        className={classnames(styles.body, {
           [styles.hidden]: !isVisible,
         })}
       >
