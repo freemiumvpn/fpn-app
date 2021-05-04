@@ -1,0 +1,31 @@
+.main {
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #0a2540;
+    border-radius: 5px;
+    visibility: visible;
+    cursor: pointer;
+    max-width: 700px;
+}
+
+.header {
+    display: flex;
+}
+
+.title {
+    color: #0a2540;
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.body {
+    margin-left: 25px;
+    line-height: 25px;
+    text-align: justify;
+}
+
+.hidden {
+    display: none;
+}

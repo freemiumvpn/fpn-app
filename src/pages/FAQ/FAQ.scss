@@ -1,0 +1,20 @@
+@import "../../shared/styles/mixins/layout.scss";
+
+.main {
+    @include page-main
+}
+
+.body {
+    margin: 66px auto 20px;
+    text-align: center;
+    h1 {
+        color: #0a2540;
+    }
+}
+
+.content {
+    padding: 0 32px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}

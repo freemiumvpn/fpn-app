@@ -164,14 +164,14 @@ const PolicyContent: React.FC = () => {
         <br />
         <ul>
           <li>
-            Auth0 - Please visit the Privacy Policy{' '}
+            Auth0 - Please visit their Privacy Policy{' '}
             <a href="https://auth0.com/privacy" target="__blank">
               here
             </a>
             .
           </li>
           <li>
-            Google - Please visit the Privacy Policy{' '}
+            Google - Please visit their Privacy Policy{' '}
             <a
               href="https://policies.google.com/privacy?hl=en-US"
               target="__blank"
@@ -181,21 +181,21 @@ const PolicyContent: React.FC = () => {
             .
           </li>
           <li>
-            Facebook - Please visit the Privacy Policy{' '}
+            Facebook - Please visit their Privacy Policy{' '}
             <a href="https://www.facebook.com/about/privacy/" target="__blank">
               here
             </a>
             .
           </li>
           <li>
-            Twitter - Please visit the Privacy Policy{' '}
+            Twitter - Please visit their Privacy Policy{' '}
             <a href="https://twitter.com/en/privacy" target="__blank">
               here
             </a>
             .
           </li>
           <li>
-            Apple - Please visit the Privacy Policy{' '}
+            Apple - Please visit their Privacy Policy{' '}
             <a
               href="https://www.apple.com/uk/legal/privacy/en-ww/"
               target="__blank"

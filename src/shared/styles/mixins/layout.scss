@@ -1,0 +1,6 @@
+@mixin page-main {
+    background-color: var(--background);
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
