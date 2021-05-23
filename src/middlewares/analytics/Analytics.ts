@@ -11,6 +11,11 @@ enum AnalyticsEventType {
   APP_PAGE_LOAD = 'APP_PAGE_LOAD',
 
   /**
+   * HOME PAGE
+   */
+  PAGE_HOME_CLICK_IOS_LINK = 'PAGE_HOME_CLICK_IOS_LINK',
+
+  /**
    * WELCOME PAGE
    */
   PAGE_WELCOME_CLICK_NEXT = 'PAGE_WELCOME_CLICK_NEXT',

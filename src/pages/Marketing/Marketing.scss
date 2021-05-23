@@ -25,13 +25,6 @@
     padding: 0 40px;
 }
 
-.introduction {
-    padding: 60px 20px 0px;
-    max-width: 500px;
-    position: relative;
-    margin: auto;
-}
-
 .imgWrapper {
     position: initial;
     text-align: center;
@@ -92,6 +85,13 @@
     align-items: center;
     justify-content: center;
     padding: 20px;
+}
+
+.introduction {
+    padding: 60px 20px 0px;
+    max-width: 500px;
+    position: relative;
+    margin: auto;
 }
 
 .introductionCta {
