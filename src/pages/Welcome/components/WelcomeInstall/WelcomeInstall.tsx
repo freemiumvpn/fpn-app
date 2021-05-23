@@ -28,8 +28,7 @@ const WelcomeInstall: React.FC = () => {
     [OperatingSystem.UNKNOWN]: '#',
     [OperatingSystem.ANDROID]:
       'https://play.google.com/store/apps/details?id=net.openvpn.openvpn',
-    [OperatingSystem.IOS]:
-      'https://apps.apple.com/gb/app/openvpn-connect/id590379981',
+    [OperatingSystem.IOS]: 'https://apps.apple.com/gb/app/fpn/id1561044840',
     [OperatingSystem.OSX]: 'https://tunnelblick.net/',
     [OperatingSystem.WINDOWS]:
       'https://openvpn.net/client-connect-vpn-for-windows/',

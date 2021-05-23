@@ -43,7 +43,14 @@ const HomePage: React.FC = () => {
     return <Redirect to={Path.USER} />
   }
 
-  return <HomePageBase />
+  const handleIosLink = (): void => {
+    analytics$.next({
+      event: AnalyticsEventType.PAGE_HOME_CLICK_IOS_LINK,
+      data: '',
+    })
+  }
+
+  return <HomePageBase handleIosLink={handleIosLink} />
 }
 
 export default HomePage
